@@ -1,0 +1,9 @@
+﻿Build started 2016-03-03 13:15:22.
+     1>Project "E:\Software\C++\test\opencv_test\opencv_test\opencv_test.vcxproj" on node 2 (Build target(s)).
+     1>Link:
+         opencv_test.vcxproj -> E:\Software\C++\test\opencv_test\x64\Debug\opencv_test.exe
+     1>Done Building Project "E:\Software\C++\test\opencv_test\opencv_test\opencv_test.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.04

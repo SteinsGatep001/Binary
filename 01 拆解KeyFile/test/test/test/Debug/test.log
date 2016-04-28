@@ -1,0 +1,4 @@
+﻿  Source.cpp
+e:\software\c++\test\test\test\source.cpp(73): warning C4018: '<': signed/unsigned mismatch
+e:\software\c++\test\test\test\source.cpp(39): warning C4715: 'keygen': not all control paths return a value
+  test.vcxproj -> E:\Software\C++\test\test\Debug\test.exe
