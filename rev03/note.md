@@ -53,7 +53,7 @@
     system("pause");
     return 0;
 ***
-    看到解密的数组列表
+看到解密的数组列表
     alph1='onhtxdsqvpzcrefjigklfzbapvdqsxzrcefimlku'
     alph2='zscbmdvholblzftuhsxsbchanrcdqjvqfinotcbu'
     alph3='pzywrvdcbqeuafsxgmlitnkopvdqsxtdnapcuwys'
@@ -143,5 +143,5 @@
     为零(ZF=1) CMOVZ AX, BX
     CMOVZ r32, r/m32 CMOVZ EAX, EB
     )
-
-    #####推广 题目来自:http://219.219.60.244/challenges.php 普普通通的逆向
+***
+####推广 题目来自:http://219.219.60.244/challenges.php 普普通通的逆向
