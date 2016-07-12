@@ -54,14 +54,14 @@
     return 0;
 ***
 看到解密的数组列表
-    alph1='onhtxdsqvpzcrefjigklfzbapvdqsxzrcefimlku'
-    alph2='zscbmdvholblzftuhsxsbchanrcdqjvqfinotcbu'
-    alph3='pzywrvdcbqeuafsxgmlitnkopvdqsxtdnapcuwys'
-    这里是在ida里算偏移算出来的
-    username:041751300132
-    对应位置为
-    bp-[h]  14  13  12  11  10  0f  0e  0d  0c  0b  0a  09
-    //      48, 52, 49, 55  53, 49, 51, 48  48, 49, 51, 50
+    alph1='onhtxdsqvpzcrefjigklfzbapvdqsxzrcefimlku' <br /> 
+    alph2='zscbmdvholblzftuhsxsbchanrcdqjvqfinotcbu' <br /> 
+    alph3='pzywrvdcbqeuafsxgmlitnkopvdqsxtdnapcuwys'<br /> 
+    这里是在ida里算偏移算出来的 <br /> 
+    username:041751300132 <br /> 
+    对应位置为<br /> 
+    bp-[h]  14  13  12  11  10  0f  0e  0d  0c  0b  0a  09 <br /> 
+    //      48, 52, 49, 55  53, 49, 51, 48  48, 49, 51, 50 <br /> 
 ***
     注意到
     produceAlph1中有个检测int3断点的程序，防止OD调试
