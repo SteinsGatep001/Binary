@@ -49,8 +49,103 @@ system("")对应的地址：0x080485d7 = 134514135
 rand需要先srand初始化化下时间种子，否则rand的返回值一直固定。然后利用异或的性质，ok
 
 #input
-```python
-#开始是这样想的
-./input `python -c "print 'A '*63 + '\x00 ' + '\x20\x0a\x0d' + ' A'*34"`
-#后来发现怎么都不对，虽然程序把\x00当成一个参数了，但是始终找不到它。
 ```
+./input `python -c "print 'A '*47 + '\x00' + '\x20\x0a\x0d'"`
+```
+发现不行，截取字符串的时候没有把\x00当成一个整体。
+然后只能又是找wp，发现都是用c来写的，定义个数组orz
+```
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+int main()
+{
+    char* padding[101] = {[0 ... 99] = "A"};//0~99全赋值为"A"
+    padding['A'] = "\x00";
+    padding['B'] = "\x20\x0a\x0d";
+    padding['C'] = "31337";
+    printf("Start\n");
+    execve("/home/input/input",padding,NULL);//这里/home/input/input写成了home/input/input
+    return 0;
+}
+```
+第一个直接通过传参数就能通过。
+第二个就有点头疼了，查了一下fd句柄的说明
+0:stdin标准输入
+1:stdout
+2:stderr
+orz。然后又看wp，有一种是利用dup2来改变fd句柄，通过管道进行赋值
+```
+    if(fork() == 0)
+    {
+        printf("Parent Processing is here...\n");
+        dup2(pipe1[0],0);
+        close(pipe1[1]);
+        dup2(pipe2[0],2);
+        close(pipe2[1]);
+        execv("/home/input/input", padding, envp);
+    }
+    else
+    {
+        printf("Son processing is here...\n");
+        write(pipe1[1], "\x00\x0a\x00\xff", 4);
+        write(pipe2[1], "\x00\x0a\x02\xff", 4);
+    }
+```
+这样前三个就over了
+然后第四个是文件读写，这个还是很简单的，查一下fopen和fwrite就好了
+最后一个是socket，之前搞arm的时候看了一点然而。。。
+```
+	int sd, cd;
+	struct sockaddr_in saddr, caddr;
+	sd = socket(AF_INET, SOCK_STREAM, 0);
+    //建立socket
+	if(sd == -1){
+		printf("socket error, tell admin\n");
+		return 0;
+	}
+	saddr.sin_family = AF_INET;
+	saddr.sin_addr.s_addr = INADDR_ANY;
+	saddr.sin_port = htons( atoi(argv['C']) );
+    //建立bind连接，端口是argv['C'],在前面设置为padding['C'] = "9000";
+	if(bind(sd, (struct sockaddr*)&saddr, sizeof(saddr)) < 0){
+		printf("bind error, use another port\n");
+    		return 1;
+	}
+	listen(sd, 1);//开启监听
+	int c = sizeof(struct sockaddr_in);
+	cd = accept(sd, (struct sockaddr *)&caddr, (socklen_t*)&c);
+	if(cd < 0){
+		printf("accept error, tell admin\n");
+		return 0;
+	}
+    //接收长度应该为4
+	if( recv(cd, buf, 4, 0) != 4 ) return 0;
+	if(memcmp(buf, "\xde\xad\xbe\xef", 4)) return 0;
+	printf("Stage 5 clear!\n");
+```
+然后方法其实不是在c里面写个socket通信，直接python
+python -c "print '\xde\xad\xbe\xef'“ | nc 127.0.0.1 9000
+Tips: 本地ip地址是127.0.0.1
+9000好像不行，换一个。88888..试了好久，网络各种卡。。
+算了，还是写个socket吧。。
+```
+int sd,cd;
+struct sockaddr_in saddr, caddr;
+sleep(5);
+printf("Connecting\n");
+sd = socket(AF_INET, SOCK_STREAM, 0);
+if(sd == -1)
+{
+    printf("socket error~\n");
+    return 0;
+}
+saddr.sin_family = AF_INET;
+saddr.sin_addr.s_addr = INADDR_ANY;
+saddr.sin_port = htons(atoi(padding['C']));
+connect(sd, (struct sockaddr *)&saddr, sizeof(saddr));
+send(sd, "\xde\xad\xbe\xef", 4, 0);
+close(sd);
+```
+通过~
