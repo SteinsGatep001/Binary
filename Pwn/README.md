@@ -39,7 +39,7 @@ define hook-stop
     generate -t py -b "/x00":产生shellcode /xXX的形式
 
 ## redare2(更多使用用的话再积累 IDA静态很多时候就够了)
-aaa
+aaa<br>
 [x] Analyze all flags starting with sym. and entry0 (aa)<br>
 [x] Analyze len bytes of instructions for references (aar)<br>
 [x] Analyze function calls (aac)<br>
