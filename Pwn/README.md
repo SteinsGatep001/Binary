@@ -40,48 +40,48 @@ define hook-stop
 
 ## redare2(更多使用用的话再积累 IDA静态很多时候就够了)
 aaa
-[x] Analyze all flags starting with sym. and entry0 (aa)
-[x] Analyze len bytes of instructions for references (aar)
-[x] Analyze function calls (aac)
-s sym.main:运行到main处
-pdf:打印汇编
-odd [strings]: 给参数来运行程序
-dc: 运行程序
-db: 下断点
-dr: 查看所有寄存器信息
-VV: 查看调用关系视图
-afvn [name] [name]: 重命名，类似ida的n
+[x] Analyze all flags starting with sym. and entry0 (aa)<br>
+[x] Analyze len bytes of instructions for references (aar)<br>
+[x] Analyze function calls (aac)<br>
+s sym.main:运行到main处<br>
+pdf:打印汇编<br>
+odd [strings]: 给参数来运行程序<br>
+dc: 运行程序<br>
+db: 下断点<br>
+dr: 查看所有寄存器信息<br>
+VV: 查看调用关系视图<br>
+afvn [name] [name]: 重命名，类似ida的n<br>
 
-echo disass main | gdb ./[program]  利用管道来调试
-"\41\xffABCD".encode('hex')
-set disassembly-flavor intel    设置为x86汇编显示
+echo disass main | gdb ./[program]  利用管道来调试<br>
+"\41\xffABCD".encode('hex')<br>
+set disassembly-flavor intel    设置为x86汇编显示<br>
 
 # Tips
 attention!!!!
 ## 连接
-ssh user@192.168.47.143 用来连接目标主机
-scp user@192.168.47.143 [filename] [dir]
-scp -P2222 col@pwnable.kr:/home/passcode
+ssh user@192.168.47.143 用来连接目标主机<br>
+scp user@192.168.47.143 [filename] [dir]<br>
+scp -P2222 col@pwnable.kr:/home/passcode<br>
 ## 追踪程序
-ltrace
-strace
+ltrace<br>
+strace<br>
 ## 本机测试
-socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
-while true ; do socat tcp-listen:12345 exec:./readme.bin ; sleep 1; done    保持程序一直执行
-nc 127.0.0.1 12345 本地测试
+socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行<br>
+while true ; do socat tcp-listen:12345 exec:./readme.bin ; sleep 1; done    保持程序一直执行<br>
+nc 127.0.0.1 12345 本地测试<br>
 ## 加载信息
-info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串
-strings: 查看文件中可见字符串
-strings -a -t x /lib32/libc.so.6 | grep "/bin/sh"
-objdump -d stack7 | grep "ret" 可以用来查找ret指令
-objdump -x [filename] 打印头文件信息以及区段信息
-objdump -T libc.so | grep gets 
+info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串<br>
+strings: 查看文件中可见字符串<br>
+strings -a -t x /lib32/libc.so.6 | grep "/bin/sh"<br>
+objdump -d stack7 | grep "ret" 可以用来查找ret指令<br>
+objdump -x [filename] 打印头文件信息以及区段信息<br>
+objdump -T libc.so | grep gets <br>
 ## 查找gadgets
-ROPgadget --binary level4 --only "pop|ret" 
-ROPgadget --binary libc.so.6 --only "pop|ret" | grep rdi
-objdump -d ./level5
-__libc_csu_init这个函数里找 ROP
-objdump -d -j.plt pwn | grep write 查找write函数地址
+ROPgadget --binary level4 --only "pop|ret" <br>
+ROPgadget --binary libc.so.6 --only "pop|ret" | grep rdi<br>
+objdump -d ./level5<br>
+__libc_csu_init这个函数里找 ROP<br>
+objdump -d -j.plt pwn | grep write 查找write函数地址<br>
 
 # Konwledge
 QAQ
@@ -90,13 +90,13 @@ QAQ
 ### 1.覆盖x86_64 ret libc
 执行call操作时栈内已经存放了传递的变量，call将当前地址压入栈中，作为返回地址，然后执行jmp到指定函数位置。构造call system时可以利用这个先存放一个地址，然后跳转。
 ### 2.dl-resolve
-高端玩家姿势，读取内存。
+高端玩家姿势，读取内存。<br>
 to be continued
 
 ## 容易犯的错误
 orz
 ### ret & call
-ret 后面必须是 .plt
+ret 后面必须是 .plt<br>
 __libc_init 里用call来必须是 .got的(具体LCTF pwn-100那个)
 ### 其他的坑
 to be continued
