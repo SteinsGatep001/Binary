@@ -114,6 +114,8 @@ to be continued
 youtube有相关视频 从他的视频学了不少
 ## [CTF writeup](https://github.com/ctfs)
 各种writeup (大多国外)
+## [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/)
+一个推荐了一些资源的0
 ## [DEF CON](https://www.defcon.org/#)
 知名hacker团队
 ## [tisiphone](https://tisiphone.net/)
