@@ -5,7 +5,7 @@ Some writeups of CTF and exercises
 ## 2.Pwn
 Study exploit and some tips about Pwn
 
-###blogs
+###sites
 1. [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/)<br>
 2. [DEF CON](https://www.defcon.org/#)<br>
 3. [tisiphone](https://tisiphone.net/)<br>
