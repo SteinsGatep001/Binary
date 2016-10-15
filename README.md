@@ -6,7 +6,10 @@ Study exploit and some tips about Pwn
 ## 3.exploit
 ###blogs
 1.[ninehackers](http://www.ninehackers.com/)<br>
-2.泉哥-[riusksk](http://riusksk.me/)<br>
-3.余弦[evilcos](http://evilcos.me/)<br>
+2.泉哥
+[riusksk](http://riusksk.me/)<br>
+3.余弦
+[evilcos](http://evilcos.me/)<br>
+[konwn-知道创宇](http://blog.knownsec.com/)
 4.[netfairy](http://www.netfairy.net/)<br>
 
