@@ -7,7 +7,7 @@ Study exploit and some tips about Pwn
 ###net&resource
 ###real exploit
 [ninehackers](http://www.ninehackers.com/)<br>
-[riusksk](http://riusksk.me/)<br>
-[余弦](http://evilcos.me/)<br>
+泉哥-[riusksk](http://riusksk.me/)<br>
+余弦[evilcos](http://evilcos.me/)<br>
 [netfairy](http://www.netfairy.net/)<br>
 
