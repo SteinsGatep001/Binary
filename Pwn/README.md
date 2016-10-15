@@ -105,7 +105,9 @@ to be continued
 # resources
 
 ##[pwnable](http://pwnable.kr/play.php)
-主要linux elf为主 比较适合开拓思路和入门
+主要linux elf为主 比较适合开拓思路和入门<br>
+[writeup-riskgray](http://rickgray.me/2015/07/24/toddler-s-bottle-writeup-pwnable-kr.html)
+
 ## [io](http://io.netgarage.org/)
 还没来得及看，主要是有arm的
 
