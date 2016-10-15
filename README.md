@@ -21,4 +21,4 @@ Study exploit and some tips about Pwn
 [konwn-知道创宇](http://blog.knownsec.com/)<br>
 4. [netfairy](http://www.netfairy.net/)<br>
 5. [See bugs](https://www.seebug.org/)<br>
-
+6. [Black Hat](https://www.blackhat.com/)<br>
