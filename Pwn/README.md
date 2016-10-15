@@ -114,12 +114,6 @@ to be continued
 youtube有相关视频 从他的视频学了不少
 ## [CTF writeup](https://github.com/ctfs)
 各种writeup (大多国外)
-## [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/)
-一个推荐了一些资源的0
-## [DEF CON](https://www.defcon.org/#)
-知名hacker团队
-## [tisiphone](https://tisiphone.net/)
-推送多 有心得系列文章可以看看
 ## [muhe](http://o0xmuhe.me/)
 CTFer 二进制
 ## [Icemakr](http://0byjwzsf.me/)
@@ -127,5 +121,11 @@ LCTF2016 pwn出题大大
 ## [uaf](http://uaf.io/)
 国外一位，各种ctf wp都有他的身影
 
+## [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/)
+一个推荐了一些资源的0
+## [DEF CON](https://www.defcon.org/#)
+知名hacker团队
+## [tisiphone](https://tisiphone.net/)
+推送多 有心得系列文章可以看看
 ## [另外 hardware](http://www.sp3ctr3.me/hardware-security-resources/)
 下面的一些资源= = 嗯。。有时间看看
