@@ -12,4 +12,5 @@ Study exploit and some tips about Pwn
 [evilcos](http://evilcos.me/)<br>
 [konwn-知道创宇](http://blog.knownsec.com/)<br>
 4. [netfairy](http://www.netfairy.net/)<br>
+5. [DEF CON](https://www.defcon.org/#)
 
