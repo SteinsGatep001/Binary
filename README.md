@@ -78,13 +78,14 @@ Study exploit and some tips about Pwn
 
 ## 6.catalog
 ### 1  ./Reverse
-做的少了 = = 基本之前做的都没有上传
+ 做的少了 = = 基本之前做的都没有上传
 
 ### 2  ./Pwn
-关于pwn的题目和练习资源<br>
- #### 1  ./pwnable
-一个很好的练习平台 不过没做多少<br>
- #### 2  ./examples
-典型的利用例子<br>
+ 关于pwn的题目和练习资源<br>
+#### 1  ./pwnable
+  一个很好的练习平台 不过没做多少<br>
+#### 2  ./examples
+  典型的利用例子<br>
+
 ### 3  ./c++ keywords 
 一些数的取值范围
