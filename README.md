@@ -5,7 +5,7 @@ Some writeups of CTF and exercises
 ### Books
 1. [RE4B-ch](https://github.com/dennis714/reverse-engineering-for-beginners)<br>
 2. [RE4B-en](https://beginners.re/RE4B-EN.pdf)<br>
-3. [IDA Pro 权威指南](http://www.ituring.com.cn/book/791)<br>
+3. [IDA Pro 权威指南](http://www.ituring.com.cn/book/791) 推荐 IDA真的很强大 OD感觉可能有点过时<br>
 4. [逆向工程核心原理](http://www.ituring.com.cn/book/1266)<br>
 5. [加密与解密](http://bbs.pediy.com/showthread.php?t=66210)<br>
 6. [C++反汇编与逆向分析技术揭秘](http://bbs.pediy.com/showthread.php?t=140350)<br>
@@ -47,7 +47,18 @@ Study exploit and some tips about Pwn
 8. [Black Hat](https://www.blackhat.com/)<br>
 9. [FreeBuf](http://freebuf.com/)
 
-## 4.CTFs
+## 4.Hardware
+硬件方面由于算做过两年开发，不过安全方面没研究过，仅仅写点开发的相关东西<br>
+### Exercises
+1. 主要是51/stm32/arm 等单片机的学习<br>
+2. linux嵌入式等相关练习<br>
+
+### Knowledge
+1. 串口uart<br>
+2. 中断<br>
+3. 无线通信协议(zigbee/wireless)<br>
+
+## 5.CTFs
 1. [ISCC](http://lazymind.me/2016/05/iscc-2016-ctf-writeup/) 这里只有一部分<br>
 2. [CTFs](https://github.com/ctfs) 各种wp<br>
 3. [IDF 实验室](http://ctf.idf.cn/) 有一些基础的re<br>
