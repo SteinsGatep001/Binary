@@ -26,7 +26,7 @@ Study exploit and some tips about Pwn
 5. [shellcode](http://shell-storm.org/shellcode/) 各种shellcode都有
 
 ### Books
-1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf)设计基本linux相关和语言<br>
+1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf) 涉及基本linux相关和语言<br>
  一些笔记 [1](http://blog.sina.com.cn/s/blog_6874dd910101l3lx.html), [2](https://www.gitbook.com/book/xxg1413/csapp/details), [3](http://wdxtub.com/2016/04/16/thin-csapp-0/)
 2. [Linux程序设计/Beginning Linux Programming](http://www.ituring.com.cn/book/171) 开发是很有必要的<br>
 3. [0day漏洞]()<br>
