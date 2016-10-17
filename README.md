@@ -34,7 +34,7 @@ Study exploit and some tips about Pwn
 5. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本
 
 ## 3.Exploit
-### Sites
+### Reference sites
 1. [ninehackers](http://www.ninehackers.com/) 有很多exploit开发的文章<br>
 2. 泉哥
  [riusksk](http://riusksk.me/) 《漏洞战争》作者<br>
@@ -47,6 +47,12 @@ Study exploit and some tips about Pwn
 7. [See bugs](https://www.seebug.org/)<br>
 8. [Black Hat](https://www.blackhat.com/)<br>
 9. [FreeBuf](http://freebuf.com/)<br>
+
+### Resource sites
+1. [Old Version Downloads](http://www.oldapps.com) 老版OS和软件 研究漏洞很有用
+2. [Old OS](http://www.oldversion.com) 同上
+3. [Flash](http://www.abysssec.com/blog/2011/04/18/exploiting-adobe-flash-player-on-windows-7/) flash漏洞研究
+4. [基础漏洞分析](http://ensiwiki.ensimag.fr/images/6/61/SecurIMAG-2011-11-17-teach-a_long_way_from_browser_vulnerability_to_kernel_exploitation.pdf) CVE-2010-0094/CVE-2010-3081 分析
 
 ## 4.Hardware
 硬件方面由于算做过两年开发，不过安全方面没研究过，仅仅写点开发的相关东西<br>
@@ -68,6 +74,8 @@ Study exploit and some tips about Pwn
 1. [Hardware Sec](http://www.sp3ctr3.me/hardware-security-resources/) 资料推荐= = 很高大上
 2. [Scanline dalao](http://scanlime.org/) 艺术家+硬件hacker
 3. [Mouse Crack](https://github.com/BastilleResearch/mousejack) 无线鼠标键盘的
+4. [路由器](http://www.routerpwn.com/) 路由器安全论坛
+5. [openwrt](https://openwrt.org/) 路由器固件
 
 ## 5.CTFs
 1. [cumt sec](http://219.219.60.244/) cumt的 为自己学校奶一口
