@@ -17,7 +17,7 @@ Some writeups of CTF and exercises
 
 
 ## 2.Pwn
-Study exploit and some tips about Pwn
+Some tips about Pwn
 ### Sites
 1. [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/) 推荐一些exploit学习资源 开始就是看这个的<br>
 2. [DEF CON](https://www.defcon.org/#) 资讯<br>
@@ -32,6 +32,7 @@ Study exploit and some tips about Pwn
 3. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本<br>
 
 ## 3.Exploit
+漏洞实在 计划最近进行 QAQ
 ### Reference sites
 1. [ninehackers](http://www.ninehackers.com/) 有很多exploit开发的文章<br>
 2. 泉哥
