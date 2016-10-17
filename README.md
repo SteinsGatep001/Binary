@@ -13,7 +13,7 @@ Some writeups of CTF and exercises
 ### Sites
 1. [看雪](http://www.pediy.com/)<br>
 2. [52破解](http://www.52pojie.cn/)<br>
-3. [i春秋](http://www.ichunqiu.com/)
+3. [i春秋](http://www.ichunqiu.com/)<br>
 
 
 ## 2.Pwn
@@ -23,7 +23,7 @@ Study exploit and some tips about Pwn
 2. [DEF CON](https://www.defcon.org/#) 资讯<br>
 3. [tisiphone](https://tisiphone.net/) 咨询<br>
 4. [exploit database](https://www.exploit-db.com/) 提供各种漏洞<br>
-5. [shellcode](http://shell-storm.org/shellcode/) 各种shellcode都有
+5. [shellcode](http://shell-storm.org/shellcode/) 各种shellcode都有<br>
 
 ### Books
 1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf) 涉及基本linux相关和语言<br>
@@ -31,7 +31,7 @@ Study exploit and some tips about Pwn
 2. [Linux程序设计/Beginning Linux Programming](http://www.ituring.com.cn/book/171) 开发是很有必要的<br>
 3. [0day漏洞]()<br>
 4. [漏洞战争-配套资料](https://github.com/riusksk/vul_war) 书淘宝都直接找 漏洞分析cve等 很难<br>
-5. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本
+5. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本<br>
 
 ## 3.Exploit
 ### Reference sites
@@ -49,10 +49,10 @@ Study exploit and some tips about Pwn
 9. [FreeBuf](http://freebuf.com/)<br>
 
 ### Resource sites
-1. [Old Version Downloads](http://www.oldapps.com) 老版OS和软件 研究漏洞很有用
-2. [Old OS](http://www.oldversion.com) 同上
-3. [Flash](http://www.abysssec.com/blog/2011/04/18/exploiting-adobe-flash-player-on-windows-7/) flash漏洞研究
-4. [基础漏洞分析](http://ensiwiki.ensimag.fr/images/6/61/SecurIMAG-2011-11-17-teach-a_long_way_from_browser_vulnerability_to_kernel_exploitation.pdf) CVE-2010-0094/CVE-2010-3081 分析
+1. [Old Version Downloads](http://www.oldapps.com) 老版OS和软件 研究漏洞很有用<br>
+2. [Old OS](http://www.oldversion.com) 同上<br>
+3. [Flash](http://www.abysssec.com/blog/2011/04/18/exploiting-adobe-flash-player-on-windows-7/) flash漏洞研究<br>
+4. [基础漏洞分析](http://ensiwiki.ensimag.fr/images/6/61/SecurIMAG-2011-11-17-teach-a_long_way_from_browser_vulnerability_to_kernel_exploitation.pdf) CVE-2010-0094/CVE-2010-3081 分析<br>
 
 ## 4.Hardware
 硬件方面由于算做过两年开发，不过安全方面没研究过，仅仅写点开发的相关东西<br>
@@ -67,18 +67,18 @@ Study exploit and some tips about Pwn
 ...等等(一找资料很多)
 
 ### Books
-1. [0day路由器](http://item.jd.com/11734639.html) 没看过 应该很6
-2. [无线电安全](https://item.jd.com/10340018520.html)
+1. [0day路由器](http://item.jd.com/11734639.html) 没看过 应该很6<br>
+2. [无线电安全](https://item.jd.com/10340018520.html)<br>
 
 ### Sites
-1. [Hardware Sec](http://www.sp3ctr3.me/hardware-security-resources/) 资料推荐= = 很高大上
-2. [Scanline dalao](http://scanlime.org/) 艺术家+硬件hacker
-3. [Mouse Crack](https://github.com/BastilleResearch/mousejack) 无线鼠标键盘的
-4. [路由器](http://www.routerpwn.com/) 路由器安全论坛
-5. [openwrt](https://openwrt.org/) 路由器固件
+1. [Hardware Sec](http://www.sp3ctr3.me/hardware-security-resources/) 资料推荐= = 很高大上<br>
+2. [Scanline dalao](http://scanlime.org/) 艺术家+硬件hacker<br>
+3. [Mouse Crack](https://github.com/BastilleResearch/mousejack) 无线鼠标键盘的<br>
+4. [路由器](http://www.routerpwn.com/) 路由器安全论坛<br>
+5. [openwrt](https://openwrt.org/) 路由器固件<br>
 
 ## 5.CTFs
-1. [cumt sec](http://219.219.60.244/) cumt的 为自己学校奶一口
+1. [cumt sec](http://219.219.60.244/) cumt的 为自己学校奶一口<br>
 2. [ISCC](http://lazymind.me/2016/05/iscc-2016-ctf-writeup/) 这里只有一部分<br>
 3. [CTFs](https://github.com/ctfs) 各种wp<br>
 4. [IDF 实验室](http://ctf.idf.cn/) 有一些基础的re<br>
@@ -86,7 +86,7 @@ Study exploit and some tips about Pwn
 
 ## 6.catalog
 ### 1  ./Reverse
- 做的少了 = = 基本之前做的都没有上传
+ 做的少了 = = 基本之前做的都没有上传<br>
 
 ### 2  ./Pwn
  关于pwn的题目和练习资源<br>
@@ -96,4 +96,4 @@ Study exploit and some tips about Pwn
   典型的利用例子<br>
 
 ### 3  ./c++ keywords 
-一些数的取值范围
+一些数的取值范围<br>
