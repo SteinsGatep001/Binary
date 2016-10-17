@@ -39,12 +39,12 @@ Study exploit and some tips about Pwn
 3. 余弦
  [evilcos](http://evilcos.me/) 有技能表<br>
  [known-知道创宇](http://blog.knownsec.com/) 可以学点哲学<br>
-4. [netfairy](http://www.netfairy.net/) <br>
-5. [腾讯玄武实验室](http://xlab.tencent.com/cn/) 漏洞发布<br>
-6. [懒人在思考](https://zhuanlan.zhihu.com/evilcos)<br>
-7. [See bugs](https://www.seebug.org/)<br>
-8. [Black Hat](https://www.blackhat.com/)<br>
-9. [FreeBuf](http://freebuf.com/)<br>
+ [懒人在思考](https://zhuanlan.zhihu.com/evilcos)<br>
+4. [腾讯玄武实验室](http://xlab.tencent.com/cn/) 漏洞发布<br>
+5. [netfairy](http://www.netfairy.net/) <br>
+6. [See bugs](https://www.seebug.org/)<br>
+7. [Black Hat](https://www.blackhat.com/)<br>
+8. [FreeBuf](http://freebuf.com/)<br>
 
 ### Resource sites
 1. [Old Version Downloads](http://www.oldapps.com) 老版OS和软件 研究漏洞很有用<br>
