@@ -32,7 +32,7 @@ Some tips about Pwn
 3. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本<br>
 
 ## 3.Exploit
-漏洞实在 计划最近进行 QAQ
+漏洞实战 计划最近进行 QAQ
 ### Reference sites
 1. [ninehackers](http://www.ninehackers.com/) 有很多exploit开发的文章<br>
 2. 泉哥
