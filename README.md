@@ -29,9 +29,7 @@ Study exploit and some tips about Pwn
 1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf) 涉及基本linux相关和语言<br>
  一些笔记 [1](http://blog.sina.com.cn/s/blog_6874dd910101l3lx.html), [2](https://www.gitbook.com/book/xxg1413/csapp/details), [3](http://wdxtub.com/2016/04/16/thin-csapp-0/)
 2. [Linux程序设计/Beginning Linux Programming](http://www.ituring.com.cn/book/171) 开发是很有必要的<br>
-3. [0day漏洞]()<br>
-4. [漏洞战争-配套资料](https://github.com/riusksk/vul_war) 书淘宝都直接找 漏洞分析cve等 很难<br>
-5. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本<br>
+3. [鸟哥的linux私房菜](http://cn.linux.vbird.org/)<br> 要学linux相关机制和命令的很不错的一本<br>
 
 ## 3.Exploit
 ### Reference sites
@@ -53,6 +51,10 @@ Study exploit and some tips about Pwn
 2. [Old OS](http://www.oldversion.com) 同上<br>
 3. [Flash](http://www.abysssec.com/blog/2011/04/18/exploiting-adobe-flash-player-on-windows-7/) flash漏洞研究<br>
 4. [基础漏洞分析](http://ensiwiki.ensimag.fr/images/6/61/SecurIMAG-2011-11-17-teach-a_long_way_from_browser_vulnerability_to_kernel_exploitation.pdf) CVE-2010-0094/CVE-2010-3081 分析<br>
+
+### Books
+1. [0day漏洞]()<br>
+2. [漏洞战争-配套资料](https://github.com/riusksk/vul_war) 书淘宝都直接找 漏洞分析cve等 很难<br>
 
 ## 4.Hardware
 硬件方面由于算做过两年开发，不过安全方面没研究过，仅仅写点开发的相关东西<br>
