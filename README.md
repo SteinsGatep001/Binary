@@ -52,10 +52,10 @@ Some tips about Pwn
 1. [ninehackers](http://www.ninehackers.com/) 有很多exploit开发的文章<br>
 2. 泉哥
  [riusksk](http://riusksk.me/) 《漏洞战争》作者<br>
-3. 余弦
- [evilcos](http://evilcos.me/) 有技能表<br>
- [known-知道创宇](http://blog.knownsec.com/) 可以学点哲学<br>
- [懒人在思考](https://zhuanlan.zhihu.com/evilcos)<br>
+3. 余弦<br>
+ - [evilcos](http://evilcos.me/) 有技能表<br>
+ - [known-知道创宇](http://blog.knownsec.com/) 可以学点哲学<br>
+ - [懒人在思考](https://zhuanlan.zhihu.com/evilcos)<br>
 4. [腾讯玄武实验室](http://xlab.tencent.com/cn/) 漏洞发布<br>
 5. [netfairy](http://www.netfairy.net/) <br>
 6. [See bugs](https://www.seebug.org/)<br>
