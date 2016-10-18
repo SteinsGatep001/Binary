@@ -24,7 +24,21 @@ Some tips about Pwn
 3. [tisiphone](https://tisiphone.net/) 咨询<br>
 4. [exploit database](https://www.exploit-db.com/) 提供各种漏洞<br>
 5. [shellcode](http://shell-storm.org/shellcode/) 各种shellcode都有<br>
-6. [How2Heap](https://github.com/shellphish/how2heap)主要是linux堆溢出相关，很好的入门资料<br>
+6. [How2Heap](https://github.com/shellphish/how2heap) 主要是linux堆溢出相关，很好的入门资料<br>
+7. [LiveOverFlow](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w) youtube有相关视频 从他的视频学了不少<br>
+8. [CTF writeup](https://github.com/ctfs) 各种writeup (大多国外)<br>
+
+### CTFer-bin
+- [muhe](http://o0xmuhe.me/)<br>
+- [hackfun](https://www.hackfun.org/)<br>
+
+- xidian
+ 1. [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
+ 2. [Zing](http://l-team.org/)<br>
+ 3. [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
+ 4. [sh3ll](http://sh3ll.me/)<br>
+ 5. [tang](http://bigtang.org/)<br>
+- [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
 
 ### Books
 1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf) 涉及基本linux相关和语言<br>
