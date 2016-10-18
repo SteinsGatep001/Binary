@@ -33,11 +33,11 @@ Some tips about Pwn
 - [hackfun](https://www.hackfun.org/)<br>
 
 - xidian
- 1. [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
- 2. [Zing](http://l-team.org/)<br>
- 3. [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
- 4. [sh3ll](http://sh3ll.me/)<br>
- 5. [tang](http://bigtang.org/)<br>
+ - [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
+ - [Zing](http://l-team.org/)<br>
+ - [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
+ - [sh3ll](http://sh3ll.me/)<br>
+ - [tang](http://bigtang.org/)<br>
 - [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
 
 ### Books
