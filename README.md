@@ -24,6 +24,7 @@ Some tips about Pwn
 3. [tisiphone](https://tisiphone.net/) 咨询<br>
 4. [exploit database](https://www.exploit-db.com/) 提供各种漏洞<br>
 5. [shellcode](http://shell-storm.org/shellcode/) 各种shellcode都有<br>
+6. [How2Heap](https://github.com/shellphish/how2heap)主要是linux堆溢出相关，很好的入门资料<br>
 
 ### Books
 1. [深入理解计算机系统](https://github.com/Urinx/Books/blob/master/cs/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F.pdf) 涉及基本linux相关和语言<br>
