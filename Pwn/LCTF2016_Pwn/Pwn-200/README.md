@@ -16,11 +16,12 @@ for(int i=0;i<=47;i++)
     read(0,name,1);
 ```
 但是这个时候栈是<br>
-- i            low
+- (low)
+- i         
 - ret_val
 - name_str
-- rbp          high
-
+- rbp     
+- (high)<br>
 如果把name_str填满 就能够在printf的时候打印出栈内保持的ebp 然后算出可以使用的栈地址<br>
 ## 2.输入id 
 ```
