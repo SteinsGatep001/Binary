@@ -23,6 +23,7 @@ for(int i=0;i<=47;i++)
 - rbp     
 - (high)<br>
 如果把name_str填满 就能够在printf的时候打印出栈内保持的ebp 然后算出可以使用的栈地址<br>
+
 ## 2.输入id 
 ```
 for(int i=0;i<=3;i++)
