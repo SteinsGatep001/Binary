@@ -97,7 +97,7 @@ p.send(fake_chunk)
 ```
 这里stack_addr调整到了刚刚好是0x61的后面的位置，所以0x61就作为这个mem的size了<br>
 关于next_size 由于之前要求输入id 并且这个id值保存在比stack_addr指向的位置高的地方，所以0x61就是根据这个确定的(0x60+1 1是标志位)<br>
-***next_size有约束条件***
+***next_size有约束条件如下***
 ```
 if(chunk_at_offset(p, size)->size <= 2*SIZE_SZ || \
 _builtin_expect(chunksize)(chunk_at_offset(p,size) >= av->system_mem,0))
@@ -106,7 +106,9 @@ _builtin_expect(chunksize)(chunk_at_offset(p,size) >= av->system_mem,0))
     goto errout;
 }
 ```
-2*SIZE_SZ < next_size < system_max_mem
+即**2*SIZE_SZ < next_size < system_max_mem**
+
+所以只要
 ```
 p.recvuntil('id ~~?')
 p.sendline(str(0x20))
