@@ -22,7 +22,7 @@ def gadget_call(func_addr, arg1=0, arg2=0, arg3=0, init_ret1=movcall_addr, init_
     return payload
 ```
 
-##注意上面这两个函数。
+##注意。
 ###1.最后是ret左右func_addr应该是plt段的函数地址，<br>
 例如.plt [puts] = 0x400500 <br>
 调用的时候是rip先到0x400500(这里的指令对应jmp 0x7???????)然后跳到该函数真正地址<br>
