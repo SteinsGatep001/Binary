@@ -72,15 +72,16 @@ while true ; do socat tcp-listen:12345 exec:./readme.bin ; sleep 1; done    保�
 nc 127.0.0.1 12345 本地测试连接<br>
 
 ### Centos 相关
-centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火墙又不太好，所以开放制定端口就好了
 
-1. 通过命令开启允许对外访问的网络端口： 
-/sbin/iptables -I INPUT -p tcp --dport 23333 -j ACCEPT 
-/etc/rc.d/init.d/iptables save 
-/etc/rc.d/init.d/iptables restart 
+centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火墙又不太好，所以开放对应端口就好了
 
-2. 查看端口是否开放 
-/etc/init.d/iptables status
+- 通过命令开启允许对外访问的网络端口(这里是23333)： <br>
+/sbin/iptables -I INPUT -p tcp --dport 23333 -j ACCEPT <br>
+/etc/rc.d/init.d/iptables save <br>
+/etc/rc.d/init.d/iptables restart <br>
+
+- 查看端口是否开放 
+/etc/init.d/iptables status <br>
 
 ## 加载信息
 info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串<br>
