@@ -1,5 +1,5 @@
 # 学习正确的姿势
-
+![](pwn_pwn.jpg)
 # 工具
 cotinuing
 ## install old gdb(用pwndbg的话就可以略过):
