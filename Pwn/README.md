@@ -20,10 +20,11 @@ cotinuing
 ## GDB debug
 ##自定义hook(这里自定制用，其实pwngdb就完全足够了)
 define hook-stop
->info registers 
->x/24wx $esp
->x/2i $eip
->end
+>info registers<br>
+>x/24wx $esp<br>
+>x/2i $eip<br>
+>end<br>
+
 ### checksec
     CANARY    : 覆盖返回地址基本不可利用
     FORTIFY   : 一种安全机制
