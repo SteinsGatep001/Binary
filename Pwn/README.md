@@ -128,21 +128,19 @@ to be continued
 ### [io](http://io.netgarage.org/) 还没来得及看，主要是有arm的
 
 ###  一些大佬的blog&net
-#### [LiveOverFlow](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w) youtube有相关视频 从他的视频学了不少
-#### [CTF writeup](https://github.com/ctfs) 各种writeup (大多国外) 集齐七龙珠召唤XXX
-#### CTFer-bin
-[muhe](http://o0xmuhe.me/)<br>
-[hackfun](https://www.hackfun.org/)<br>
-##### xidian
--  [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
--  [Zing](http://l-team.org/)<br>
--  [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
--  [sh3ll](http://sh3ll.me/)<br>
--  [tang](http://bigtang.org/)<br>
+1. [LiveOverFlow](https://www.youtube.com/channel/UClcE-kVhqyiHCcjYwcpfj9w) youtube有相关视频 从他的视频学了不少
+2. [CTF writeup](https://github.com/ctfs) 各种writeup (大多国外) 集齐七龙珠召唤XXX
+3. CTFer-bin
+	- [muhe](http://o0xmuhe.me/)<br>
+	- [hackfun](https://www.hackfun.org/)<br>
+	- [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
+	-  [Zing](http://l-team.org/)<br>
+	-  [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
+	-  [sh3ll](http://sh3ll.me/)<br>
+	-  [tang](http://bigtang.org/)<br>
 
-##### [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
-
-#### [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/) 一个推荐了一些资源的0
-#### [DEF CON](https://www.defcon.org/#) 知名hacker团队
-#### [tisiphone](https://tisiphone.net/) 推送多 有心得系列文章可以看看
-#### [另外 hardware](http://www.sp3ctr3.me/hardware-security-resources/) 下面的一些资源= = 嗯。。有时间看看
+	- [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
+4. [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/) 一个推荐了一些资源的0
+5. [DEF CON](https://www.defcon.org/#) 知名hacker团队
+6. [tisiphone](https://tisiphone.net/) 推送多 有心得系列文章可以看看
+7. [另外 hardware](http://www.sp3ctr3.me/hardware-security-resources/) 下面的一些资源= = 嗯。。有时间看看
