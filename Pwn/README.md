@@ -134,11 +134,10 @@ to be continued
 	- [muhe](http://o0xmuhe.me/)<br>
 	- [hackfun](https://www.hackfun.org/)<br>
 	- [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大<br>
-	-  [Zing](http://l-team.org/)<br>
-	-  [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
-	-  [sh3ll](http://sh3ll.me/)<br>
-	-  [tang](http://bigtang.org/)<br>
-
+	- [Zing](http://l-team.org/)<br>
+	- [math1as](http://www.math1as.com/) 原来这个dalao是西电的啊 - - 有pwnable wp<br>
+	- [sh3ll](http://sh3ll.me/)<br>
+	- [tang](http://bigtang.org/)<br>
 	- [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
 4. [resource recommand](http://www.pentest.guru/index.php/2016/01/28/best-books-tutorials-and-courses-to-learn-about-exploit-development/) 一个推荐了一些资源的0
 5. [DEF CON](https://www.defcon.org/#) 知名hacker团队
