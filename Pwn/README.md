@@ -73,8 +73,9 @@ scp -P2222 col@pwnable.kr:/home/passcode<br>
 ltrace<br>
 strace<br>
 ### 测试
+主要看socat用法<br>
 socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行<br>
-while true ; do socat tcp-listen:12345 exec:./readme.bin ; sleep 1; done    保持程序一直执行<br>
+socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行<br>
 nc 127.0.0.1 12345 本地测试连接<br>
 
 #### Centos 相关
