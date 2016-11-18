@@ -8,12 +8,14 @@
 
 ### GDB debug
 ### 自定义hook(这里自定制用，其实pwngdb就完全足够了)
-
+```
 define hook-stop
->info registers<br>
->x/24wx $esp<br>
->x/2i $eip<br>
->end<br>
+>info registers
+>x/24wx $esp
+>x/2i $eip
+>end
+```
+- stack 100 查看栈信息
 
 ### checksec
 这个在pwntools里已经有了
@@ -44,24 +46,25 @@ define hook-stop
     set cmd /bin/sh
     generate -t py -b "/x00":产生shellcode /xXX的形式
 
-### redare2(要用的话再积累 IDA静态很多时候就够了)
-aaa<br>
-[x] Analyze all flags starting with sym. and entry0 (aa)<br>
-[x] Analyze len bytes of instructions for references (aar)<br>
-[x] Analyze function calls (aac)<br>
-s sym.main:运行到main处<br>
-pdf:打印汇编<br>
-odd [strings]: 给参数来运行程序<br>
-dc: 运行程序<br>
-db: 下断点<br>
-dr: 查看所有寄存器信息<br>
-VV: 查看调用关系视图<br>
-afvn [name] [name]: 重命名，类似ida的n<br>
+### redare2(要用的话再积累 IDA更加方便)
+```
+aaa
+[x] Analyze all flags starting with sym. and entry0 (aa)
+[x] Analyze len bytes of instructions for references (aar)
+[x] Analyze function calls (aac)
+s sym.main:运行到main处
+pdf:打印汇编
+odd [strings]: 给参数来运行程序
+dc: 运行程序
+db: 下断点
+dr: 查看所有寄存器信息
+VV: 查看调用关系视图
+afvn [name] [name]: 重命名，类似ida的n
 
-echo disass main | gdb ./[program]  利用管道来调试<br>
-"\41\xffABCD".encode('hex')<br>
-set disassembly-flavor intel    设置为x86汇编显示<br>
-
+echo disass main | gdb ./[program]  利用管道来调试
+"\41\xffABCD".encode('hex'
+set disassembly-flavor intel    设置为x86汇编显示
+```
 
 ## 一些姿势
 
@@ -84,37 +87,41 @@ scp -P2222 col@pwnable.kr:/home/passcode<br>
 ltrace<br>
 strace<br>
 ### 测试
-主要看socat用法<br>
-socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行<br>
-socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行<br>
-nc 127.0.0.1 12345 本地测试连接<br>
+主要看socat用法
+```
+socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
+socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
+nc 127.0.0.1 12345 本地测试连接
+```
 
 #### Centos 相关
 
 centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火墙又不太好，所以开放对应端口就好了
 
-- 通过命令开启允许对外访问的网络端口(这里是23333)： <br>
-/sbin/iptables -I INPUT -p tcp --dport 23333 -j ACCEPT <br>
-/etc/rc.d/init.d/iptables save <br>
-/etc/rc.d/init.d/iptables restart <br>
-
-- 查看端口是否开放 
-/etc/init.d/iptables status <br>
-
+- 通过命令开启允许对外访问的网络端口(这里是23333)：
+```
+/sbin/iptables -I INPUT -p tcp --dport 23333 -j ACCEPT
+/etc/rc.d/init.d/iptables save 
+/etc/rc.d/init.d/iptables restart 
+/etc/init.d/iptables status// 查看端口是否开放 
+```
 ### 加载信息
-info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串<br>
-strings: 查看文件中可见字符串<br>
-strings -a -t x /lib32/libc.so.6 | grep "/bin/sh"<br>
-objdump -d stack7 | grep "ret" 可以用来查找ret指令<br>
-objdump -x [filename] 打印头文件信息以及区段信息<br>
-objdump -T libc.so | grep gets <br>
+```
+info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串
+strings: 查看文件中可见字符串
+strings -a -t x /lib32/libc.so.6 | grep "/bin/sh"
+objdump -d stack7 | grep "ret" 可以用来查找ret指令
+objdump -x [filename] 打印头文件信息以及区段信息
+objdump -T libc.so | grep gets
+```
 ### 查找gadgets
-ROPgadget --binary level4 --only "pop|ret" <br>
-ROPgadget --binary libc.so.6 --only "pop|ret" | grep rdi<br>
-objdump -d ./level5<br>
-__libc_csu_init这个函数里找 ROP<br>
-objdump -d -j.plt pwn | grep write 查找write函数地址<br>
-
+```
+ROPgadget --binary level4 --only "pop|ret" 
+ROPgadget --binary libc.so.6 --only "pop|ret" | grep rdi
+objdump -d ./level5
+__libc_csu_init这个函数里找 ROP
+objdump -d -j.plt pwn | grep write 查找write函数地址
+```
 ## Konwledge
 QAQ
 栈主要就是找溢出和rop等
