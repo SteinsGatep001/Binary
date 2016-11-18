@@ -65,6 +65,17 @@ set disassembly-flavor intel    设置为x86汇编显示<br>
 
 ## 一些姿势
 
+### 自己编译
+- gcc
+```
+ -fno-stack-protector// 去除栈保护 如 gcc -m32 -g -fno-stack-protector -z execstack -o vuln vuln.c
+```
+- nasm
+```
+nasm -f elf -o vlun.o vuln.asm   //编译
+ld -m elf_i386 -s -o vuln vuln.o vuln.o  //链接
+./vuln 运行
+```
 ### 连接
 ssh user@192.168.47.143 用来连接目标主机<br>
 scp user@192.168.47.143 [filename] [dir]<br>
