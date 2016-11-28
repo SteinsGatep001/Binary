@@ -35,6 +35,7 @@ define hook-stop
 	p = process('./pwnfun') # 挂载进程
 	elf = ELF('./pwnfun') # 看到的结果就和checksec一样
 	p.interactive()  # 弹shell
+	context.log_level = 'debug' # 挂进程之后显示各种调试信息
 ```
 - DynELF这个用来leak十分好用，不过leak格式比较难写，有点迷
 - elf.got['puts'] 这个少用，也有点迷，用ROPgadget(见下文)代替比较好
