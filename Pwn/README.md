@@ -8,7 +8,7 @@
 
 ### GDB debug
 ### 自定义hook(这里自定制用，其实pwngdb就完全足够了)
-```
+```asm
 define hook-stop
 >info registers
 >x/24wx $esp
@@ -31,7 +31,7 @@ define hook-stop
 ### pwntools
 具体网上一堆教程如：[pwntools使用](http://www.cnblogs.com/pcat/p/5451780.html)，这里就是个人整理一点
 
-```
+```Python
 	p = process('./pwnfun') # 挂载进程
 	elf = ELF('./pwnfun') # 看到的结果就和checksec一样
 	p.interactive()  # 弹shell
@@ -48,7 +48,7 @@ define hook-stop
     generate -t py -b "/x00":产生shellcode /xXX的形式
 
 ### redare2(要用的话再积累 IDA更加方便)
-```
+```gdb
 aaa
 [x] Analyze all flags starting with sym. and entry0 (aa)
 [x] Analyze len bytes of instructions for references (aar)
@@ -71,11 +71,11 @@ set disassembly-flavor intel    设置为x86汇编显示
 
 ### 自己编译
 - gcc
-```
+```bash
  -fno-stack-protector// 去除栈保护 如 gcc -m32 -g -fno-stack-protector -z execstack -o vuln vuln.c
 ```
 - nasm
-```
+```bash
 nasm -f elf -o vlun.o vuln.asm   //编译
 ld -m elf_i386 -s -o vuln vuln.o vuln.o  //链接
 ./vuln 运行
@@ -89,7 +89,7 @@ ltrace<br>
 strace<br>
 ### 测试
 主要看socat用法
-```
+```bash
 socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
 socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
 nc 127.0.0.1 12345 本地测试连接
@@ -100,14 +100,14 @@ nc 127.0.0.1 12345 本地测试连接
 centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火墙又不太好，所以开放对应端口就好了
 
 - 通过命令开启允许对外访问的网络端口(这里是23333)：
-```
+```bash
 /sbin/iptables -I INPUT -p tcp --dport 23333 -j ACCEPT
 /etc/rc.d/init.d/iptables save 
 /etc/rc.d/init.d/iptables restart 
 /etc/init.d/iptables status// 查看端口是否开放 
 ```
 ### 加载信息
-```
+```bash
 info proc map 查看各个库加载信息然后寻找 "/bin/sh" 字符串
 strings: 查看文件中可见字符串
 strings -a -t x /lib32/libc.so.6 | grep "/bin/sh"
@@ -116,7 +116,7 @@ objdump -x [filename] 打印头文件信息以及区段信息
 objdump -T libc.so | grep gets
 ```
 ### 查找gadgets
-```
+```bash
 ROPgadget --binary level4 --only "pop|ret" 
 ROPgadget --binary libc.so.6 --only "pop|ret" | grep rdi
 objdump -d ./level5
