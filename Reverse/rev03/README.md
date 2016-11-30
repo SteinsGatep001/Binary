@@ -2,7 +2,7 @@
 闲着无聊 做了学校的ctf平台的一题（之前遗留了）
 先uxp脱壳 然后拖进ida
 主要代码如下
-
+```C++
     falgDug = 0;
     inUser = 0;                                   // [bp-14h] 开始依次 48, 52, 49, 55, 53, 49, 51, 48, 48, 49, 51, 50
     v_13h = 0;
@@ -52,8 +52,9 @@
     LABEL_13:
     system("pause");
     return 0;
-***
+```
 看到解密的数组列表
+```C++
     alph1='onhtxdsqvpzcrefjigklfzbapvdqsxzrcefimlku' <br /> 
     alph2='zscbmdvholblzftuhsxsbchanrcdqjvqfinotcbu' <br /> 
     alph3='pzywrvdcbqeuafsxgmlitnkopvdqsxtdnapcuwys'<br /> 
@@ -62,8 +63,9 @@
     对应位置为<br /> 
     bp-[h]  14  13  12  11  10  0f  0e  0d  0c  0b  0a  09 <br /> 
     //      48, 52, 49, 55  53, 49, 51, 48  48, 49, 51, 50 <br /> 
-***
+```
     注意到
+```C++
     produceAlph1中有个检测int3断点的程序，防止OD调试
     v9 = GetTickCount();
     v5 = &loc_401052;
@@ -79,14 +81,17 @@
     while ( !getInt3 );
     if ( getInt3 )
     falgDug = 1;
-***
-    ###IDA伪指令解析错误:
-    怎么写脚本调都不对，问了学长，flag对了，但是伪C代码逻辑有改地方不对
-    这个地方：
+```
+### IDA伪指令解析错误:
+
+怎么写脚本调都不对，问了学长，flag对了，但是伪C代码逻辑有改地方不对，找了半天
+``` C++
     f_8 = *((_BYTE *)&aIdaq64_exe[5 * (isDbg + 2 * (unsigned __int8)isFsd) + 2] + *(_BYTE *)pThis);
-    反过去汇编才发现ida F5解析错了 应该是：
-    *((_BYTE *)&aIdaq64_exe[2 * 5 * (isDbg + 2 * (unsigned __int8)isFsd)]才对吧
-***
+    //反过去汇编才发现ida F5解析错了 应该是：
+    //*((_BYTE *)&aIdaq64_exe[2 * 5 * (isDbg + 2 * (unsigned __int8)isFsd)]才对吧
+```
+好坑啊，直接上汇编吧
+```asm
     .text:00401420 var_4           = dword ptr -4
     .text:00401420
     .text:00401420                 push    ebp
@@ -143,5 +148,6 @@
     为零(ZF=1) CMOVZ AX, BX
     CMOVZ r32, r/m32 CMOVZ EAX, EB
     )
-***
-####推广 题目来自:http://219.219.60.244/challenges.php 普普通通的逆向
+```
+#### 推广 
+题目来自:http://219.219.60.244/challenges.php 普普通通的逆向
