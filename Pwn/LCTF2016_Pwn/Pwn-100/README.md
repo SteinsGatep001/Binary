@@ -1,5 +1,5 @@
 ##Tips:
-```
+```Python
 *1
 def gadget_arg1(func_addr, arg):
     payload = overwrite
