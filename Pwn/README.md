@@ -1,6 +1,6 @@
 ![](pwn_pwn.jpg)
 
-# 工具
+## 工具
 删除了peda和其他一些小工具。pwndbg足够了
 ### pwndbg
 这个比peda好用一点。推荐
