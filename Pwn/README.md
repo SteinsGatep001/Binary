@@ -2,12 +2,15 @@
 
 ## 工具
 删除了peda和其他一些小工具。pwndbg足够了
+
 ### pwndbg
 这个比peda好用一点。推荐
+
 - **stack 100** 清晰的查看栈的具体信息，很实用
 
 ### GDB debug
-### 自定义hook(这里自定制用，其实pwngdb就完全足够了)
+
+#### 自定义hook(这里自定制用，其实pwngdb就完全足够了)
 ```asm
 define hook-stop
 >info registers
