@@ -153,6 +153,8 @@ QAQ
 姿势有点高端:)，读取内存。需要了解一下加载过程。(学二进制不知道文件加载过程和咸鱼有什么区别(*^_^*))
 
 附上文章[uaf_io find system](http://uaf.io/exploitation/misc/2016/04/02/Finding-Functions.html)
+#### uaf
+pwnable 有一个
 
 #### double free
 想进入二进制的门槛都要会heap。然而我好像撞死在门槛上了。/(ㄒoㄒ)/~~
