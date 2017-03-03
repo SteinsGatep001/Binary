@@ -111,6 +111,11 @@ socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
 socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
 nc 127.0.0.1 12345 本地测试连接
 ```
+### 关闭alarm
+
+alarm比较烦，不方便调试
+
+handle SIGALRM print nopass 可以用来把alarm关掉(实际上我也没法gdb调试, 不知道为什么)
 
 #### Centos 相关
 
