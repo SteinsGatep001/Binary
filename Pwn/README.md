@@ -33,6 +33,18 @@ context.log_level = 'debug' # 挂进程之后显示各种调试信息
 - **DynELF**这个用来leak十分好用，不过leak格式比较难写，有点迷
 - elf.got['puts'] 这个少用，也有点迷，用ROPgadget(见下文)代替比较好
 
+#### dbg
+
+关闭ptrace使得能够attach
+```
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
+程序中调用调试
+```
+gdb_code='b *0x4009F2\nb *0x400A6D\nb *0x400778\nb*0x400944\n'
+gdb.attach(proc.pidof(io)[0],gdb_code)
+```
+
 ### checksec（pwntools中也有)
 
 ```
@@ -111,11 +123,7 @@ socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
 socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
 nc 127.0.0.1 12345 本地测试连接
 ```
-### 关闭alarm
 
-alarm比较烦，不方便调试
-
-handle SIGALRM print nopass 可以用来把alarm关掉(实际上我也没法gdb调试, 不知道为什么)
 
 #### Centos 相关
 
@@ -128,6 +136,11 @@ centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火
 /etc/rc.d/init.d/iptables restart
 /etc/init.d/iptables status// 查看端口是否开放
 ```
+### 关闭alarm
+
+alarm比较烦，不方便调试
+
+handle SIGALRM print nopass 可以用来把alarm关掉(实际上我也没法gdb调试, 不知道为什么)
 
 ### 加载信息
 ```bash
