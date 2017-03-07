@@ -44,6 +44,12 @@ echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
 gdb_code='b *0x4009F2\nb *0x400A6D\nb *0x400778\nb*0x400944\n'
 gdb.attach(proc.pidof(io)[0],gdb_code)
 ```
+如果出现
+Disable ptrace_scope to attach to running processes
+只要
+```
+echo 0 | sudo tee /proc/sys/kernel/yama/ptrace_scope
+```
 
 ### checksec（pwntools中也有)
 
