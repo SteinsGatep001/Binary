@@ -172,11 +172,12 @@ QAQ
 
 附上文章[uaf_io find system](http://uaf.io/exploitation/misc/2016/04/02/Finding-Functions.html)
 #### uaf
-pwnable 有一个
+pwnable
 
 #### double free
-想进入二进制的门槛都要会heap。然而我好像撞死在门槛上了。/(ㄒoㄒ)/~~
-
+主要就是堆堆的大小要十分的清楚
+#### unlink
+一般都是结合其他的一些漏洞一起用
 
 ### 一些坑
 #### ret & call
