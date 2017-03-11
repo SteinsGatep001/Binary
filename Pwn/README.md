@@ -179,6 +179,9 @@ pwnable
 #### unlink
 一般都是结合其他的一些漏洞一起用
 
+#### off-by-one
+孤独的1byte
+
 ### 一些坑
 #### ret & call
 ret 后面必须是 .plt<br>
