@@ -126,7 +126,10 @@ nc 127.0.0.1 12345 本地测试连接
 #### Docker
 写好Dockerfile之后
 ```
+# 构建image，注意网络配置
 sudo docker build --network=host -t csaw:warmup .
+# 运行 注意端口映射
+sudo docker run -p 8000:8000 csaw:warmup
 ```
 
 #### Centos 相关
