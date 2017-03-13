@@ -123,7 +123,11 @@ socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
 socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
 nc 127.0.0.1 12345 本地测试连接
 ```
-
+#### Docker
+写好Dockerfile之后
+```
+sudo docker build --network=host -t csaw:warmup .
+```
 
 #### Centos 相关
 
