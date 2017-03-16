@@ -1,4 +1,4 @@
-##Tips:
+## Tips:
 
 ```Python
 
@@ -23,22 +23,22 @@ def gadget_call(func_addr, arg1=0, arg2=0, arg3=0, init_ret1=movcall_addr, init_
     return payload
 ```
 
-##注意。
+## 注意。
 
-###1.最后是ret左右func_addr应该是plt段的函数地址，<br>
+### 1.最后是ret左右func_addr应该是plt段的函数地址，<br>
 
 例如.plt [puts] = 0x400500 <br>
 调用的时候是rip先到0x400500(这里的指令对应jmp 0x7???????)然后跳到该函数真正地址<br>
 但是如果ret 0x601018(这是got表 里面存的是真正的函数地址的值) 就会执行0x601018这个地址对应的值(转换成code)<br>
 
-###2. call func_addr
+### 2. call func_addr
 
 必须是got的地址<br>
 .got[read] = 0x601028<br>
 调用的时候是call 0x601028(call的是真正的函数的地址 比如call 0x7ff????????)<br>
 但是如果用ret 就会ret到0x601028 rip指向0x601028 明显不是真正func_addr的地址<br>
 
-###总结
+### 总结
 
 ret 后面必须是 .plt<br>
 __libc_init 里用call来必须是 .got的<br>
