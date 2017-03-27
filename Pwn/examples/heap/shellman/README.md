@@ -4,11 +4,14 @@ handle SIGALRM print nopass 可以用来把alarm关掉(实际上我也没法gdb�
 2.堆溢出比较复杂(理解就花了好久,现在也还不是特别清晰), 画图来理解稍微好点
 
 ## 结构体
+
+```
  sh_st           struc ; (sizeof=0x18, mappedto_1) ; XREF: .bss:stru_6016C0/r
 00000000 flag            dq ?                    ; XREF: new_sh+AA/w
 00000008 size            dq ?                    ; XREF: new_sh+B5/w
 00000010 name_ptr        dq ?                    ; XREF: new_sh+BC/w
 00000018 sh_st           ends
+```
 
 ## 漏洞点
 get_name(sh_st->name_ptr, length); // 这里length也是输入的，但是这里没有对length检查，所以在new创建的size如果小于这个，就会发生堆溢出
