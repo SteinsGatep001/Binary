@@ -53,12 +53,19 @@ P->fd->bk = P->bk 相当于修改*((addr-0x18)+0x18) 为 value
 主要流程是:
 
 1.创建三个chunk chunk[0~3]
+
 2.edit(chunk0) 构造chunk0为free chunk并且覆盖下chunk1的头部
+
 3.然后释放chunk1 触发unlink 修改0x6016d0(name_ptr 0的地址)为前面的一地址(0x6016b8)
+
 4.调用edit(chunk0) 对0x6016b8那一段空间的值更改, 而且刚好能够更改到name_ptr 0的地址(更改为got表中free的地址)
+
 5.调用list(0)就可以leak出真实的free地址, 然后计算真实的system函数地址, 绕过ASLR
+
 6.再次调用edit(0) 对got表中free更改, 更改为4中获得的system函数地址, 那么之后只要调用free, 就相当于调用system
+
 7.只要之前把chunk3那边写有"/bin/sh"相关字符串的free掉, 就能执行system了
+
 8.第一次搞orz 照着别人的自己理解的改(抄)了下
 
 ### 计算system函数地址
@@ -72,11 +79,15 @@ system_addr = free_addr - lib_free_addr + lib_sys_addr
 
 ### 遇到的坑
 1.data_0  = 'p'*(first_size-0x20)   这里伪造的时候填充的数据需要减去头部信息, 而不是new时候的大小
+
 2.size_1  = p64(second_size + 0x10) 这里要注意第二个块的大小是加上头部的pre chunk size和自身chunk size 并没有fd和bk
+
 3.读取leak出的free地址
+
 样例用的是zio 而我自己用pwn(没事找事)
 这个真是坑惨了, 搞了好几个小时(不知道为什么没法调试), 结果就是读取的时候没有把地址转换对orz(我好菜啊)
 我用的转换方法好笨orz 其实最简单的是用zio的l64
+
 return l64(io.read(16).decode('hex'))
 ```
 recv_addr = p.read(8 * 2) #这里注意对读取的地址进行适当的转换
