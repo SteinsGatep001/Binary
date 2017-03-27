@@ -49,8 +49,9 @@ P->fd = addr-0x18 , P->bk = value 时
 P->fd->bk = P->bk 相当于修改*((addr-0x18)+0x18) 为 value
 
 
-##流程
+## 流程
 主要流程是:
+
 1.创建三个chunk chunk[0~3]
 2.edit(chunk0) 构造chunk0为free chunk并且覆盖下chunk1的头部
 3.然后释放chunk1 触发unlink 修改0x6016d0(name_ptr 0的地址)为前面的一地址(0x6016b8)
