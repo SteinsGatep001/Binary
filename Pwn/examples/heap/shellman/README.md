@@ -70,12 +70,19 @@ P->fd->bk = P->bk 相当于修改*((addr-0x18)+0x18) 为 value
 
 ### 计算system函数地址
 利用libc库中的free函数地址
+
 objdump -T lib.so.6 | grep system 
+
 本机的so库: lib_sys_addr =  0x0000000000046590
+
             lib_free_addr = 0x0000000000082d00
+            
 提供的so库: lib_sys_addr =  0x0000000000046640
+
             lib_free_addr = 0x0000000000082df0
+            
 system_addr = free_addr - lib_free_addr + lib_sys_addr
+
 
 ### 遇到的坑
 1.data_0  = 'p'*(first_size-0x20)   这里伪造的时候填充的数据需要减去头部信息, 而不是new时候的大小
@@ -84,8 +91,10 @@ system_addr = free_addr - lib_free_addr + lib_sys_addr
 
 3.读取leak出的free地址
 
-样例用的是zio 而我自己用pwn(没事找事)
+样例用的是zio 而我自己用pwn
+
 这个真是坑惨了, 搞了好几个小时(不知道为什么没法调试), 结果就是读取的时候没有把地址转换对orz(我好菜啊)
+
 我用的转换方法好笨orz 其实最简单的是用zio的l64
 
 return l64(io.read(16).decode('hex'))
