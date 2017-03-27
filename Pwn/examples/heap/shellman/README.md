@@ -18,7 +18,9 @@ get_name(sh_st->name_ptr, length); // 这里length也是输入的，但是这里
 
 ## 利用原理
 small chunk // large chunk 在某相邻的chunk free之后, 该chunk对前后的chunk检查, 如果为free, 就进行向前或向后何必, 并且把检查到的free chunk从bins双链表中删除
+
 由linux堆的结构可以知道，如果创建了chunk1，再创建chunk2(这里可以说是name_ptr指向的地方)，chunk的头部信息首先是
+
 ```
 0x00 pre chunk size
 0x08 chunk size |N|M|P| P=0 : pre chunk free
@@ -26,6 +28,7 @@ small chunk // large chunk 在某相邻的chunk free之后, 该chunk对前后的
 0x18 bk
 ```
 其中主要P表示前一堆块是否被使用
+
 这里把P覆盖成0的话，就会使程序错误的执行ulink, 而且程序错误的认为name_ptr_0 是free chunk 即可以认为name_ptr_0指向了bin里的一个项
 ```c
 /* Take a chunk off a bin list */
