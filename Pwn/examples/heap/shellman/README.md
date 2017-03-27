@@ -1,28 +1,30 @@
-##Tips
-1.ÒòÎª³ÌĞòÀïalarmÏŞÖÆÊ±¼ä60s
-handle SIGALRM print nopass ¿ÉÒÔÓÃÀ´°Ñalarm¹Øµô(Êµ¼ÊÉÏÎÒÒ²Ã»·¨gdbµ÷ÊÔ, ²»ÖªµÀÎªÊ²Ã´)
-2.¶ÑÒç³ö±È½Ï¸´ÔÓ(Àí½â¾Í»¨ÁËºÃ¾Ã,ÏÖÔÚÒ²»¹²»ÊÇÌØ±ğÇåÎú), »­Í¼À´Àí½âÉÔÎ¢ºÃµã
+## Tips
+1.å› ä¸ºç¨‹åºé‡Œalarmé™åˆ¶æ—¶é—´60s
+handle SIGALRM print nopass å¯ä»¥ç”¨æ¥æŠŠalarmå…³æ‰(å®é™…ä¸Šæˆ‘ä¹Ÿæ²¡æ³•gdbè°ƒè¯•, ä¸çŸ¥é“ä¸ºä»€ä¹ˆ)
+2.å †æº¢å‡ºæ¯”è¾ƒå¤æ‚(ç†è§£å°±èŠ±äº†å¥½ä¹…,ç°åœ¨ä¹Ÿè¿˜ä¸æ˜¯ç‰¹åˆ«æ¸…æ™°), ç”»å›¾æ¥ç†è§£ç¨å¾®å¥½ç‚¹
 
-##½á¹¹Ìå
+## ç»“æ„ä½“
  sh_st           struc ; (sizeof=0x18, mappedto_1) ; XREF: .bss:stru_6016C0/r
 00000000 flag            dq ?                    ; XREF: new_sh+AA/w
 00000008 size            dq ?                    ; XREF: new_sh+B5/w
 00000010 name_ptr        dq ?                    ; XREF: new_sh+BC/w
 00000018 sh_st           ends
 
-##Â©¶´µã
-get_name(sh_st->name_ptr, length); // ÕâÀïlengthÒ²ÊÇÊäÈëµÄ£¬µ«ÊÇÕâÀïÃ»ÓĞ¶Ôlength¼ì²é£¬ËùÒÔÔÚnew´´½¨µÄsizeÈç¹ûĞ¡ÓÚÕâ¸ö£¬¾Í»á·¢Éú¶ÑÒç³ö
+## æ¼æ´ç‚¹
+get_name(sh_st->name_ptr, length); // è¿™é‡Œlengthä¹Ÿæ˜¯è¾“å…¥çš„ï¼Œä½†æ˜¯è¿™é‡Œæ²¡æœ‰å¯¹lengthæ£€æŸ¥ï¼Œæ‰€ä»¥åœ¨newåˆ›å»ºçš„sizeå¦‚æœå°äºè¿™ä¸ªï¼Œå°±ä¼šå‘ç”Ÿå †æº¢å‡º
 
-##ÀûÓÃÔ­Àí
-small chunk // large chunk ÔÚÄ³ÏàÁÚµÄchunk freeÖ®ºó, ¸Ãchunk¶ÔÇ°ºóµÄchunk¼ì²é, Èç¹ûÎªfree, ¾Í½øĞĞÏòÇ°»òÏòºóºÎ±Ø, ²¢ÇÒ°Ñ¼ì²éµ½µÄfree chunk´ÓbinsË«Á´±íÖĞÉ¾³ı
-ÓÉlinux¶ÑµÄ½á¹¹¿ÉÒÔÖªµÀ£¬Èç¹û´´½¨ÁËchunk1£¬ÔÙ´´½¨chunk2(ÕâÀï¿ÉÒÔËµÊÇname_ptrÖ¸ÏòµÄµØ·½)£¬chunkµÄÍ·²¿ĞÅÏ¢Ê×ÏÈÊÇ
+## åˆ©ç”¨åŸç†
+small chunk // large chunk åœ¨æŸç›¸é‚»çš„chunk freeä¹‹å, è¯¥chunkå¯¹å‰åçš„chunkæ£€æŸ¥, å¦‚æœä¸ºfree, å°±è¿›è¡Œå‘å‰æˆ–å‘åä½•å¿…, å¹¶ä¸”æŠŠæ£€æŸ¥åˆ°çš„free chunkä»binsåŒé“¾è¡¨ä¸­åˆ é™¤
+ç”±linuxå †çš„ç»“æ„å¯ä»¥çŸ¥é“ï¼Œå¦‚æœåˆ›å»ºäº†chunk1ï¼Œå†åˆ›å»ºchunk2(è¿™é‡Œå¯ä»¥è¯´æ˜¯name_ptræŒ‡å‘çš„åœ°æ–¹)ï¼Œchunkçš„å¤´éƒ¨ä¿¡æ¯é¦–å…ˆæ˜¯
+```
 0x00 pre chunk size
 0x08 chunk size |N|M|P| P=0 : pre chunk free
 0x10 fd
 0x18 bk
-ÆäÖĞÖ÷ÒªP±íÊ¾Ç°Ò»¶Ñ¿éÊÇ·ñ±»Ê¹ÓÃ
-ÕâÀï°ÑP¸²¸Ç³É0µÄ»°£¬¾Í»áÊ¹³ÌĞò´íÎóµÄÖ´ĞĞulink, ¶øÇÒ³ÌĞò´íÎóµÄÈÏÎªname_ptr_0 ÊÇfree chunk ¼´¿ÉÒÔÈÏÎªname_ptr_0Ö¸ÏòÁËbinÀïµÄÒ»¸öÏî
 ```
+å…¶ä¸­ä¸»è¦Pè¡¨ç¤ºå‰ä¸€å †å—æ˜¯å¦è¢«ä½¿ç”¨
+è¿™é‡ŒæŠŠPè¦†ç›–æˆ0çš„è¯ï¼Œå°±ä¼šä½¿ç¨‹åºé”™è¯¯çš„æ‰§è¡Œulink, è€Œä¸”ç¨‹åºé”™è¯¯çš„è®¤ä¸ºname_ptr_0 æ˜¯free chunk å³å¯ä»¥è®¤ä¸ºname_ptr_0æŒ‡å‘äº†biné‡Œçš„ä¸€ä¸ªé¡¹
+```c
 /* Take a chunk off a bin list */
 #define unlink(AV, P, BK, FD)
 {                             
@@ -33,7 +35,7 @@ small chunk // large chunk ÔÚÄ³ÏàÁÚµÄchunk freeÖ®ºó, ¸Ãchunk¶ÔÇ°ºóµÄchunk¼ì²é, È
     else
     {								    
         FD->bk = BK;				
-        BK->fd = FD;                //ĞèÒª×¢ÒâÕâÀï ¾ÍÊÇ°Ñfree chunk´ÓË«Á´±íÉ¾³ı
+        BK->fd = FD;                //éœ€è¦æ³¨æ„è¿™é‡Œ å°±æ˜¯æŠŠfree chunkä»åŒé“¾è¡¨åˆ é™¤
       
         //large chunk do something
         //...
@@ -41,39 +43,42 @@ small chunk // large chunk ÔÚÄ³ÏàÁÚµÄchunk freeÖ®ºó, ¸Ãchunk¶ÔÇ°ºóµÄchunk¼ì²é, È
 }
 ```
 P->fd->bk = P->bk; 
-P->fd = addr-0x18 , P->bk = value Ê± 
-P->fd->bk = P->bk Ïàµ±ÓÚĞŞ¸Ä*((addr-0x18)+0x18) Îª value
 
-##Á÷³Ì
-Ö÷ÒªÁ÷³ÌÊÇ:
-1.´´½¨Èı¸öchunk chunk[0~3]
-2.edit(chunk0) ¹¹Ôìchunk0Îªfree chunk²¢ÇÒ¸²¸ÇÏÂchunk1µÄÍ·²¿
-3.È»ºóÊÍ·Åchunk1 ´¥·¢unlink ĞŞ¸Ä0x6016d0(name_ptr 0µÄµØÖ·)ÎªÇ°ÃæµÄÒ»µØÖ·(0x6016b8)
-4.µ÷ÓÃedit(chunk0) ¶Ô0x6016b8ÄÇÒ»¶Î¿Õ¼äµÄÖµ¸ü¸Ä, ¶øÇÒ¸ÕºÃÄÜ¹»¸ü¸Äµ½name_ptr 0µÄµØÖ·(¸ü¸ÄÎªgot±íÖĞfreeµÄµØÖ·)
-5.µ÷ÓÃlist(0)¾Í¿ÉÒÔleak³öÕæÊµµÄfreeµØÖ·, È»ºó¼ÆËãÕæÊµµÄsystemº¯ÊıµØÖ·, ÈÆ¹ıASLR
-6.ÔÙ´Îµ÷ÓÃedit(0) ¶Ôgot±íÖĞfree¸ü¸Ä, ¸ü¸ÄÎª4ÖĞ»ñµÃµÄsystemº¯ÊıµØÖ·, ÄÇÃ´Ö®ºóÖ»Òªµ÷ÓÃfree, ¾ÍÏàµ±ÓÚµ÷ÓÃsystem
-7.Ö»ÒªÖ®Ç°°Ñchunk3ÄÇ±ßĞ´ÓĞ"/bin/sh"Ïà¹Ø×Ö·û´®µÄfreeµô, ¾ÍÄÜÖ´ĞĞsystemÁË
-8.µÚÒ»´Î¸ãorz ÕÕ×Å±ğÈËµÄ×Ô¼ºÀí½âµÄ¸Ä(³­)ÁËÏÂ
+P->fd = addr-0x18 , P->bk = value æ—¶ 
 
-###¼ÆËãsystemº¯ÊıµØÖ·
-ÀûÓÃlibc¿âÖĞµÄfreeº¯ÊıµØÖ·
+P->fd->bk = P->bk ç›¸å½“äºä¿®æ”¹*((addr-0x18)+0x18) ä¸º value
+
+
+##æµç¨‹
+ä¸»è¦æµç¨‹æ˜¯:
+1.åˆ›å»ºä¸‰ä¸ªchunk chunk[0~3]
+2.edit(chunk0) æ„é€ chunk0ä¸ºfree chunkå¹¶ä¸”è¦†ç›–ä¸‹chunk1çš„å¤´éƒ¨
+3.ç„¶åé‡Šæ”¾chunk1 è§¦å‘unlink ä¿®æ”¹0x6016d0(name_ptr 0çš„åœ°å€)ä¸ºå‰é¢çš„ä¸€åœ°å€(0x6016b8)
+4.è°ƒç”¨edit(chunk0) å¯¹0x6016b8é‚£ä¸€æ®µç©ºé—´çš„å€¼æ›´æ”¹, è€Œä¸”åˆšå¥½èƒ½å¤Ÿæ›´æ”¹åˆ°name_ptr 0çš„åœ°å€(æ›´æ”¹ä¸ºgotè¡¨ä¸­freeçš„åœ°å€)
+5.è°ƒç”¨list(0)å°±å¯ä»¥leakå‡ºçœŸå®çš„freeåœ°å€, ç„¶åè®¡ç®—çœŸå®çš„systemå‡½æ•°åœ°å€, ç»•è¿‡ASLR
+6.å†æ¬¡è°ƒç”¨edit(0) å¯¹gotè¡¨ä¸­freeæ›´æ”¹, æ›´æ”¹ä¸º4ä¸­è·å¾—çš„systemå‡½æ•°åœ°å€, é‚£ä¹ˆä¹‹ååªè¦è°ƒç”¨free, å°±ç›¸å½“äºè°ƒç”¨system
+7.åªè¦ä¹‹å‰æŠŠchunk3é‚£è¾¹å†™æœ‰"/bin/sh"ç›¸å…³å­—ç¬¦ä¸²çš„freeæ‰, å°±èƒ½æ‰§è¡Œsystemäº†
+8.ç¬¬ä¸€æ¬¡æorz ç…§ç€åˆ«äººçš„è‡ªå·±ç†è§£çš„æ”¹(æŠ„)äº†ä¸‹
+
+### è®¡ç®—systemå‡½æ•°åœ°å€
+åˆ©ç”¨libcåº“ä¸­çš„freeå‡½æ•°åœ°å€
 objdump -T lib.so.6 | grep system 
-±¾»úµÄso¿â: lib_sys_addr =  0x0000000000046590
+æœ¬æœºçš„soåº“: lib_sys_addr =  0x0000000000046590
             lib_free_addr = 0x0000000000082d00
-Ìá¹©µÄso¿â: lib_sys_addr =  0x0000000000046640
+æä¾›çš„soåº“: lib_sys_addr =  0x0000000000046640
             lib_free_addr = 0x0000000000082df0
 system_addr = free_addr - lib_free_addr + lib_sys_addr
 
-###Óöµ½µÄ¿Ó
-1.data_0  = 'p'*(first_size-0x20)   ÕâÀïÎ±ÔìµÄÊ±ºòÌî³äµÄÊı¾İĞèÒª¼õÈ¥Í·²¿ĞÅÏ¢, ¶ø²»ÊÇnewÊ±ºòµÄ´óĞ¡
-2.size_1  = p64(second_size + 0x10) ÕâÀïÒª×¢ÒâµÚ¶ş¸ö¿éµÄ´óĞ¡ÊÇ¼ÓÉÏÍ·²¿µÄpre chunk sizeºÍ×ÔÉíchunk size ²¢Ã»ÓĞfdºÍbk
-3.¶ÁÈ¡leak³öµÄfreeµØÖ·
-ÑùÀıÓÃµÄÊÇzio ¶øÎÒ×Ô¼ºÓÃpwn(Ã»ÊÂÕÒÊÂ)
-Õâ¸öÕæÊÇ¿Ó²ÒÁË, ¸ãÁËºÃ¼¸¸öĞ¡Ê±(²»ÖªµÀÎªÊ²Ã´Ã»·¨µ÷ÊÔ), ½á¹û¾ÍÊÇ¶ÁÈ¡µÄÊ±ºòÃ»ÓĞ°ÑµØÖ·×ª»»¶Ôorz(ÎÒºÃ²Ë°¡)
-ÎÒÓÃµÄ×ª»»·½·¨ºÃ±¿orz ÆäÊµ×î¼òµ¥µÄÊÇÓÃzioµÄl64
+### é‡åˆ°çš„å‘
+1.data_0  = 'p'*(first_size-0x20)   è¿™é‡Œä¼ªé€ çš„æ—¶å€™å¡«å……çš„æ•°æ®éœ€è¦å‡å»å¤´éƒ¨ä¿¡æ¯, è€Œä¸æ˜¯newæ—¶å€™çš„å¤§å°
+2.size_1  = p64(second_size + 0x10) è¿™é‡Œè¦æ³¨æ„ç¬¬äºŒä¸ªå—çš„å¤§å°æ˜¯åŠ ä¸Šå¤´éƒ¨çš„pre chunk sizeå’Œè‡ªèº«chunk size å¹¶æ²¡æœ‰fdå’Œbk
+3.è¯»å–leakå‡ºçš„freeåœ°å€
+æ ·ä¾‹ç”¨çš„æ˜¯zio è€Œæˆ‘è‡ªå·±ç”¨pwn(æ²¡äº‹æ‰¾äº‹)
+è¿™ä¸ªçœŸæ˜¯å‘æƒ¨äº†, æäº†å¥½å‡ ä¸ªå°æ—¶(ä¸çŸ¥é“ä¸ºä»€ä¹ˆæ²¡æ³•è°ƒè¯•), ç»“æœå°±æ˜¯è¯»å–çš„æ—¶å€™æ²¡æœ‰æŠŠåœ°å€è½¬æ¢å¯¹orz(æˆ‘å¥½èœå•Š)
+æˆ‘ç”¨çš„è½¬æ¢æ–¹æ³•å¥½ç¬¨orz å…¶å®æœ€ç®€å•çš„æ˜¯ç”¨zioçš„l64
 return l64(io.read(16).decode('hex'))
 ```
-recv_addr = p.read(8 * 2) #ÕâÀï×¢Òâ¶Ô¶ÁÈ¡µÄµØÖ·½øĞĞÊÊµ±µÄ×ª»»
+recv_addr = p.read(8 * 2) #è¿™é‡Œæ³¨æ„å¯¹è¯»å–çš„åœ°å€è¿›è¡Œé€‚å½“çš„è½¬æ¢
 ret_addr = ''
 for i in range(8):
     ret_addr += recv_addr[2*i+1] + recv_addr[2*i]
@@ -82,9 +87,12 @@ print type(ret_addr), len(ret_addr), ret_addr
 return int(ret_addr[::-1], 16)
 ```
 
-##Reference
-[Linex ¶Ñ](http://tyrande000.how/2016/02/20/linux%E4%B8%8B%E7%9A%84%E5%A0%86%E7%AE%A1%E7%90%86/)
-[linux ¶Ñ ÉÏ](https://jiji262.github.io/wooyun_articles/drops/Linux%E5%A0%86%E7%AE%A1%E7%90%86%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(%E4%B8%8A%E5%8D%8A%E9%83%A8).html)
-[linux ¶Ñ ÏÂ](https://jiji262.github.io/wooyun_articles/drops/Linux%E5%A0%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90(%E4%B8%8B%E5%8D%8A%E9%83%A8).html)
-[linux ¶Ñ unlinkÀûÓÃ](http://tyrande000.how/2016/03/21/linux%E5%A0%86%E6%BA%A2%E5%87%BA%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90/)
-Ç¿Íø±­¡±ÍøÂç°²È«ÌôÕ½ÈüWriteUp
+## Reference
+[Linex å †](http://tyrande000.how/2016/02/20/linux%E4%B8%8B%E7%9A%84%E5%A0%86%E7%AE%A1%E7%90%86/)
+
+[linux å † ä¸Š](https://jiji262.github.io/wooyun_articles/drops/Linux%E5%A0%86%E7%AE%A1%E7%90%86%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(%E4%B8%8A%E5%8D%8A%E9%83%A8).html)
+
+[linux å † ä¸‹](https://jiji262.github.io/wooyun_articles/drops/Linux%E5%A0%86%E5%86%85%E5%AD%98%E7%AE%A1%E7%90%86%E6%B7%B1%E5%85%A5%E5%88%86%E6%9E%90(%E4%B8%8B%E5%8D%8A%E9%83%A8).html)
+
+[linux å † unlinkåˆ©ç”¨](http://tyrande000.how/2016/03/21/linux%E5%A0%86%E6%BA%A2%E5%87%BA%E5%AE%9E%E4%BE%8B%E5%88%86%E6%9E%90/)
+å¼ºç½‘æ¯â€ç½‘ç»œå®‰å…¨æŒ‘æˆ˜èµ›WriteUp
