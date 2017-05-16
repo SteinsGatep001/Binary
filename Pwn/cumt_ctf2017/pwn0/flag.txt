@@ -1,1 +1,0 @@
-flag{he11o_test_ea3y_fun_pwn}
