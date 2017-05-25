@@ -15,4 +15,7 @@
 
 ## 笑
 
-暂时不给exp
+可以参考https://github.com/shellphish/how2heap/blob/master/fastbin_dup_into_stack.c
+学习一下fastbin attack(自己找个简单的例子更好)<br>
+
+exp给了
