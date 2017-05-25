@@ -33,4 +33,5 @@ target：Windows10 64bit<br>
 简单的调试环境就配置好了，有工具就是简单
 ### other
 此外，还可以设置ida来调试<br>
-详见[ida+windbg](http://ydc1992.github.io/2016/12/05/IDA-6-8-VirtualKD-WINDBG%E8%B0%83%E8%AF%95%E5%86%85%E6%A0%B8/)
+详见[ida+windbg](http://ydc1992.github.io/2016/12/05/IDA-6-8-VirtualKD-WINDBG%E8%B0%83%E8%AF%95%E5%86%85%E6%A0%B8/)<br>
+http://bobao.360.cn/learning/detail/3399.html<br>
