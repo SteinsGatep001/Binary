@@ -114,6 +114,10 @@ Some tips about Pwn
 ### 2  ./Pwn
  关于pwn的题目和练习资源<br>
  
+-  ./2017
+一些CTF笔记<br>
+-  ./examples
+一些基本技巧<br>
 -  ./pwnable
   一个很好的练习平台 不过没做多少<br>
 -  ./examples
