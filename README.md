@@ -11,6 +11,9 @@
                                                                               $$$                     
                                                                             $$$$                      
                                                                             $                             
+
+> 随手写的笔记，算是学习过程的一点记录，忘记的时候也可以方便查
+
 ## 1.Reverse
 Some writeups of CTF and exercises
 ### Books
@@ -84,16 +87,7 @@ Some tips about Pwn
 2. [漏洞战争-配套资料](https://github.com/riusksk/vul_war) 书淘宝都直接找 漏洞分析cve等 很难<br>
 
 ## 4.Hardware
-硬件方面由于算做过两年开发，不过安全方面没研究过，仅仅写点开发的相关东西<br>
-### Exercises
-1. 主要是51/stm32/arm 等单片机的学习<br>
-2. linux嵌入式等相关练习<br>
-
-### Knowledge
-1. 串口uart<br>
-2. 中断<br>
-3. 无线通信协议(zigbee/wireless)<br>
-...等等(一找资料很多)
+硬件方面由于稍微写过点，不过安全方面没研究过<br>
 
 ### Books
 1. [0day路由器](http://item.jd.com/11734639.html) 没看过 应该很6<br>
@@ -107,7 +101,7 @@ Some tips about Pwn
 5. [openwrt](https://openwrt.org/) 路由器固件<br>
 
 ## 5.CTFs
-1. [cumt sec](http://219.219.60.244/) cumt的 为自己学校奶一口<br>
+1. [cumt sec](http://www.bxsteam.xyz/) cumt的 为自己学校奶一口<br>
 2. [ISCC](http://lazymind.me/2016/05/iscc-2016-ctf-writeup/) 这里只有一部分<br>
 3. [CTFs](https://github.com/ctfs) 各种wp<br>
 4. [IDF 实验室](http://ctf.idf.cn/) 有一些基础的re<br>
