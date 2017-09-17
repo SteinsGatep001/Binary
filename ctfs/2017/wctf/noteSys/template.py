@@ -2,7 +2,7 @@ import time, sys
 from pwn import *
 
 # local process envirnoment
-LOCAL = True
+LOCAL = False
 elf_name = "./note_sys"
 
 #retmote args
