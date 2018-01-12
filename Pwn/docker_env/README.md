@@ -23,3 +23,12 @@ sudo docker run -p 2333:2333 bxs:pwn1
 ```
 注意端口映射
 
+### 导出镜像
+```
+docker save -o pwndocker.tar pwn1:pwn1
+```
+
+### 导入镜像
+```
+sudo docker load --input pwndocker.tar
+```
