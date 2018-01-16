@@ -1,7 +1,7 @@
 
 ## Resources
 
-1. [https://github.com/xairy/linux-kernel-exploitation](linux kernel exploitation)
+1. [linux kernel exploitation](https://github.com/xairy/linux-kernel-exploitation)
 
 
 ## To be continued
