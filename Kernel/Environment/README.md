@@ -1,5 +1,4 @@
-# Eat Sleep Ring0
-
+# Ring0 Environment
 
 ## Environment
 
@@ -10,7 +9,7 @@
 
 要让qemu能跑起来，并调试内核，需要
 ```bash
-qemu-system-i386 -nographic -kernel ./linux-2.6.32.1/arch/i386/boot/bzImage -append "console=ttyS0 rw ip=dhcp init=/sbin/init" -initrd ./busybox-1.19.4/initramfs-busybox-x86.cpio.gz -gdb tcp::1234 -S
+qemu-system-i386 -nographic -kernel ./linux-2.6.32.1/arch/i386/boot/bzImage -append "console=ttyS0" -initrd ./busybox-1.19.4/initramfs-busybox-x86.cpio.gz -gdb tcp::1234 -S
 ```
 
 具体操作：
@@ -19,5 +18,9 @@ qemu-system-i386 -nographic -kernel ./linux-2.6.32.1/arch/i386/boot/bzImage -app
 3. 在gdb下断点，然后就可以调试了
 
 
+## Ref
+
+1. [https://en.wikibooks.org/wiki/QEMU/Debugging_with_QEMU](qemu kernel debug)
+2. [https://beyermatthias.de/blog/2016/11/01/setup-for-linux-kernel-dev-using-qemu/](setup linux kernel in qemu)
 
 
