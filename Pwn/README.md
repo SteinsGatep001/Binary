@@ -126,9 +126,9 @@ nc 127.0.0.1 12345 本地测试连接
 
 ### 调试`libc`源码
 
-基本步骤不难
+基本步骤不难<br>
 
-1. 安装`libc`的调试库
+#### 1. 安装`libc`的调试库
 ````bash
 # x86_64
 sudo apt-get install libc6-dbg
@@ -137,9 +137,9 @@ sudo apt-get install libc6:i386
 sudo apt-get install libc6-dbg:i386
 ```
 
-2. 把源码下下来`sudo apt install glibc-source`
+#### 2. 把源码下下来`sudo apt install glibc-source`
 
-3. 进入`gdb`，指定源码目录（比如malloc）
+#### 3. 进入`gdb`，指定源码目录（比如malloc）
 ```bash
 pwndbg> dir /usr/src/glibc/glibc-2.26/malloc
 Source directories searched: /usr/src/glibc/glibc-2.26/malloc:/usr/src/glibc/glibc-2.26:$cdir:$cwd
@@ -157,7 +157,7 @@ Source directories searched: /usr/src/glibc/glibc-2.26/malloc:/usr/src/glibc/gli
    3062     = atomic_forced_read (__malloc_hook);
 ```
 
-#### Docker
+### Docker
 
 写好Dockerfile之后
 ```
@@ -168,7 +168,7 @@ sudo docker run -p 8000:8000 csaw:warmup
 ```
 具体`docker`相关的配置在`docker_env`里面
 
-#### Centos 相关
+### Centos 相关
 
 centos可能默认开了防火墙 所以端口都是关闭的 但是关闭防火墙又不太好，所以开放对应端口就好了
 
