@@ -1,6 +1,6 @@
 ![](pwn_pwn.jpg)
 
-## 工具
+## 1. 工具
 IDA+pwndbg+pwntools+...
 
 ### IDA
@@ -91,7 +91,7 @@ set disassembly-flavor intel 设置为x86汇编显示
 ```
 
 
-## Complie
+## 2. Complie
 - gcc
 ```bash
 -fno-stack-protector// 去除栈保护 如 gcc -m32 -g -fno-stack-protector -z execstack -o vuln vuln.c
@@ -103,7 +103,7 @@ ld -m elf_i386 -s -o vuln vuln.o vuln.o //链接
 ./vuln 运行
 ```
 
-## 一些姿势
+## 3. 一些姿势
 
 ### 连接
 ```bash
@@ -202,8 +202,10 @@ objdump -d ./level5
 __libc_csu_init这个函数里找 ROP
 objdump -d -j.plt pwn | grep write 查找write函数地址
 ```
-## Konwledge
+## 4. Konwledge
 QAQ
+
+### 基础知识
 
 #### 覆盖`x86_64 ret libc`
 执行call操作时栈内已经存放了传递的变量，call将当前地址压入栈中，作为返回地址，然后执行jmp到指定函数位置。构造call system时可以利用这个先存放一个地址，然后跳转。
@@ -235,7 +237,7 @@ pwnable
 #### 其他的坑
 to be continued
 
-## resources
+## 5. resources
 
 ### [pwnable](http://pwnable.kr/play.php)
 主要linux elf为主 比较适合开拓思路和入门，做过一点，不过因为懒，有点荒废了
@@ -263,3 +265,4 @@ youtube有相关视频 从他的视频学了不少
 知名hacker团队
 ### [tisiphone](https://tisiphone.net/)
 推送多 有心得体会系列文章可以看看
+
