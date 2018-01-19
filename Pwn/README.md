@@ -135,7 +135,9 @@ sudo apt-get install libc6-dbg
 sudo apt-get install libc6:i386
 sudo apt-get install libc6-dbg:i386
 ```
+
 2. 把源码下下来`sudo apt install glibc-source`
+
 3. 进入`gdb`，指定源码目录（比如malloc）
 ```bash
 pwndbg> dir /usr/src/glibc/glibc-2.26/malloc
