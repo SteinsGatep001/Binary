@@ -56,10 +56,9 @@ RELRO : Partial: 不可修改strtab
 Full : 程序装载时填充got表
 ```
 
-### ROPgadget
-```bash
-ROPgadget --binary ./pwn --only "pop|ret" | grep rdi
-```
+### ropper
+
+之前一直用`ROPgadget`，不过后来发现还是`ropper`更好
 
 ### metsploit
 ```bash
@@ -105,6 +104,7 @@ ld -m elf_i386 -s -o vuln vuln.o vuln.o //链接
 ```
 
 ## 一些姿势
+
 ### 连接
 ```bash
 ssh user@192.168.47.143 用来连接目标主机
@@ -123,7 +123,39 @@ socat tcp-listen:12345 exec:./stack_overflow 把程序放到本机运行
 socat tcp-listen:22333,reuseaddr,fork system:./pwnme 保持程序一直执行
 nc 127.0.0.1 12345 本地测试连接
 ```
+
+### 调试`libc`源码
+
+基本步骤不难
+1. 安装`libc`的调试库
+````bash
+# x86_64
+sudo apt-get install libc6-dbg
+# 32bit 可以安装下面的
+sudo apt-get install libc6:i386
+sudo apt-get install libc6-dbg:i386
+```
+2. 把源码下下来`sudo apt install glibc-source`
+3. 进入`gdb`，指定源码目录（比如malloc）
+```bash
+pwndbg> dir /usr/src/glibc/glibc-2.26/malloc
+Source directories searched: /usr/src/glibc/glibc-2.26/malloc:/usr/src/glibc/glibc-2.26:$cdir:$cwd
+──────────────────────────────────────────────────────────────────────[ SOURCE (CODE) ]───────────────────────────────────────────────────────────────────────
+   3052 #define MAYBE_INIT_TCACHE()
+   3053 #endif
+   3054
+   3055 void *
+   3056 __libc_malloc (size_t bytes)
+ ► 3057 {
+   3058   mstate ar_ptr;
+   3059   void *victim;
+   3060
+   3061   void *(*hook) (size_t, const void *)
+   3062     = atomic_forced_read (__malloc_hook);
+```
+
 #### Docker
+
 写好Dockerfile之后
 ```
 # 构建image，注意网络配置
@@ -131,6 +163,7 @@ sudo docker build --network=host -t csaw:warmup .
 # 运行 注意端口映射
 sudo docker run -p 8000:8000 csaw:warmup
 ```
+具体`docker`相关的配置在`docker_env`里面
 
 #### Centos 相关
 
@@ -168,14 +201,11 @@ objdump -d -j.plt pwn | grep write 查找write函数地址
 ```
 ## Konwledge
 QAQ
-栈主要就是找溢出和rop等
 
-#### 覆盖x86_64 ret libc
+#### 覆盖`x86_64 ret libc`
 执行call操作时栈内已经存放了传递的变量，call将当前地址压入栈中，作为返回地址，然后执行jmp到指定函数位置。构造call system时可以利用这个先存放一个地址，然后跳转。
 #### ROP
 基础技能了，不过自己经常是会忘，都要照着汇编来看参数传递顺序≧ ﹏ ≦
-#### dl-resolve
-姿势有点高端:)，读取内存。需要了解一下加载过程。(学二进制不知道文件加载过程和咸鱼有什么区别(*^_^*))
 
 附上文章[uaf_io find system](http://uaf.io/exploitation/misc/2016/04/02/Finding-Functions.html)
 #### uaf
@@ -189,10 +219,14 @@ pwnable
 #### off-by-one
 孤独的1byte
 
+#### shrink
+就是改变堆大小进行进一步利用
+
+#### `IO_FILE`
+这个是文件流相关的利用，著名的有`house of orange`
+
 ### 一些坑
-#### ret & call
-ret 后面必须是 .plt<br>
-__libc_init 里用call来必须是 .got的(具体LCTF pwn-100那个)
+
 #### 关于DynELF
 有一定的成功率，不过如果网速或者服务器不过关，这个方法并不是很好，dl-resolve相对易成功一点。baidu杯那个不知道是不是这个原因QAQ
 #### 其他的坑
@@ -217,8 +251,6 @@ youtube有相关视频 从他的视频学了不少
 - [hackfun](https://www.hackfun.org/)
 - [Icemakr](http://0byjwzsf.me/) LCTF2016 pwn出题大大
 - [Zing](http://l-team.org/)
-- [math1as](http://www.math1as.com/) dalao 西电
-- [sh3ll](http://sh3ll.me/)
 - [tang](http://bigtang.org/)
 - [uaf](http://uaf.io/) 国外一位，各种ctf wp都有他的身影
 
