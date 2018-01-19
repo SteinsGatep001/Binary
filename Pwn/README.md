@@ -128,8 +128,8 @@ nc 127.0.0.1 12345 本地测试连接
 
 基本步骤不难
 
-#### 安装`libc`的调试库
-````bash
+1. 安装`libc`的调试库
+```bash
 # x86_64
 sudo apt-get install libc6-dbg
 # 32bit 可以安装下面的
