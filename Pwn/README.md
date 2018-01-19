@@ -126,9 +126,9 @@ nc 127.0.0.1 12345 本地测试连接
 
 ### 调试`libc`源码
 
-基本步骤不难<br>
+基本步骤不难
 
-#### 1. 安装`libc`的调试库
+#### 安装`libc`的调试库
 ````bash
 # x86_64
 sudo apt-get install libc6-dbg
@@ -137,9 +137,9 @@ sudo apt-get install libc6:i386
 sudo apt-get install libc6-dbg:i386
 ```
 
-#### 2. 把源码下下来`sudo apt install glibc-source`
+#### 把源码下下来`sudo apt install glibc-source`
 
-#### 3. 进入`gdb`，指定源码目录（比如malloc）
+#### 进入`gdb`，指定源码目录（比如malloc）
 ```bash
 pwndbg> dir /usr/src/glibc/glibc-2.26/malloc
 Source directories searched: /usr/src/glibc/glibc-2.26/malloc:/usr/src/glibc/glibc-2.26:$cdir:$cwd
