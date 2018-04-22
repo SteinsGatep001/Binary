@@ -1,16 +1,25 @@
 #!/bin/sh
-
-echo "INIT SCRIPT"
-
+ 
 mount -t proc none /proc
 mount -t sysfs none /sys
-mount -t debugfs none /sys/kernel/debug
-
-mkdir /tmp
-mount -t tmpfs none /tmp
-
-mdev -s # We need this to find /dev/sda later
-
+ 
 echo -e "\nBoot took $(cut -d' ' -f1 /proc/uptime) seconds\n"
 
+echo '''
+      i      ii              i
+    ii iii   iii             iii
+    ii                       iii
+    iiiiii  iiii   iiiiiiiii iii iiiii
+ iiiii       ii   iii    ii  iiiii  iii
+  iiii       ii   iiii       iiii   iii
+    ii       ii       iiiii  iii    ii
+    ii       ii          iii iii    ii
+    ii      iiii  i      iii iii    ii
+     i       ii      iiii    i      ii
+
+'''
+ 
+su fish
 exec /bin/sh
+
+
